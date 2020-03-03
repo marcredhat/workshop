@@ -59,3 +59,36 @@ Under members, add the names of the projects where you'll deploy service mesh ap
 
 image:../images/3installservicemeshcontrolplane.png[title="Install control plane"]
 
+
+----
+oc new-project marc-bookinfo
+----
+
+
+----
+git clone https://github.com/marcredhat/istio-demo.git
+cd istio-demo/bookinfo/
+----
+
+
+----
+oc project marc-bookinfo
+----
+
+----
+oc create -f 0-bookinfo.yaml
+service/details created
+deployment.extensions/details-v1 created
+service/ratings created
+deployment.extensions/ratings-v1 created
+serviceaccount/bookinfo-reviews created
+service/reviews created
+deployment.extensions/reviews-v1 created
+deployment.extensions/reviews-v2 created
+deployment.extensions/reviews-v3 created
+serviceaccount/bookinfo-productpage created
+service/productpage created
+deployment.extensions/productpage-v1 created
+----
+
+

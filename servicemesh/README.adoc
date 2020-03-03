@@ -293,4 +293,4 @@ to the ratings workload
 ----
 
 
-image:../images/withoutmixerrule[title="Whitelisting and Blacklisting"]
+image:../images/withoutmixerrule.png[title="Whitelisting and Blacklisting"]

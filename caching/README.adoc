@@ -1,7 +1,7 @@
 == Caching
 
 ----
-​ use Red Hat Data Grid for Openshift as a cache,to increase the response time of your applications. 
+1) use Red Hat Data Grid for Openshift as a cache,to increase the response time of your applications. 
 
 This mission covers:
 - The deployment of Red Hat Data Grid on OpenShift
@@ -10,7 +10,7 @@ This mission covers:
 See https://github.com/snowdrop/cache-example
 
 
-​ Red Hat Data Grid is also usable as a `NoSql database`, or even 
+2) Red Hat Data Grid is also usable as a `NoSql database`, or even 
 an `event broker` and 
 fits great in `integration/migration` that use Fuse/Camel
 

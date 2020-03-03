@@ -92,3 +92,36 @@ deployment.extensions/productpage-v1 created
 ----
 
 
+----
+oc get pods --show-labels
+NAME                              READY   STATUS    RESTARTS   AGE   LABELS
+details-v1-789c5f58f4-cscj4       1/1     Running   0          57s   app=details,pod-template-hash=789c5f58f4,version=v1
+productpage-v1-856c8cc5d8-sldlm   1/1     Running   0          56s   app=productpage,pod-template-hash=856c8cc5d8,version=v1
+ratings-v1-5786768978-s5ksf       1/1     Running   0          57s   app=ratings,pod-template-hash=5786768978,version=v1
+reviews-v1-5874566865-47mlc       1/1     Running   0          57s   app=reviews,pod-template-hash=5874566865,version=v1
+reviews-v2-86865fc7d9-qksh2       1/1     Running   0          56s   app=reviews,pod-template-hash=86865fc7d9,version=v2
+reviews-v3-8d4cbbbbf-b5c5m        1/1     Running   0          56s   app=reviews,pod-template-hash=8d4cbbbbf,version=v3
+----
+
+
+----
+oc create -f 1-bookinfo-gateway.yaml
+gateway.networking.istio.io/bookinfo-gateway created
+virtualservice.networking.istio.io/bookinfo created
+----
+
+
+----
+export GATEWAY_URL=$(oc -n marc-service-mesh get route istio-ingressgateway -o jsonpath='{.spec.host}')
+echo "GATEWAY_URL=$GATEWAY_URL"
+GATEWAY_URL=istio-ingressgateway-marc-service-mesh.apps.ocp43.local
+----
+
+
+----
+oc create -f demo-3-virtual-service-reviews-jason-v2-v3.yaml
+virtualservice.networking.istio.io/reviews created
+----
+
+
+

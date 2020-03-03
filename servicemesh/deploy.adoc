@@ -1,7 +1,15 @@
-From the Operator Hub, install the Serverless Operator (This will install the Service Mesh Operator as well)
 
+== Installing Service Mesh on OpenShift 4.3
+
+
+----
+From the Operator Hub, install the Serverless Operator (This will install the Service Mesh Operator as well)
+----
+
+
+----
 Create a new project for the service mesh control plane
 oc new-project marc-service-mesh
-
+----
 
 image:../images/1installservicemeshcontrolplane.png[title="Install control plane"]

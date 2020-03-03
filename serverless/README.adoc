@@ -1,5 +1,6 @@
 == Kafka/Knative labs
 
+Credits: Guillaume Moutier
 
 ----
 Use case:

@@ -1,0 +1,4 @@
+
+----
+https://developers.redhat.com/blog/2020/01/17/net-core-on-red-hat-platforms/
+----

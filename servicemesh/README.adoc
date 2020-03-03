@@ -11,4 +11,215 @@ or IP-based white or black listing.
 ----
 
 
+----
+Ensure that policy check are NOT disabled
+oc get cm -n marc-istio-system istio -o jsonpath='{.data.mesh}' | grep disablePolicyChecks
+disablePolicyChecks: false
+----
+
+----
+Example: block traffic to version 3 of reviews
+----
+
+----
+oc describe Gateway
+Name:         bookinfo-gateway
+Namespace:    bookinfo
+Labels:       <none>
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"networking.istio.io/v1alpha3","kind":"Gateway","metadata":{"annotations":{},"name":"bookinfo-gateway","namespace":"bookinfo...
+API Version:  networking.istio.io/v1alpha3
+Kind:         Gateway
+Metadata:
+  Creation Timestamp:  2020-02-26T03:44:29Z
+  Generation:          1
+  Resource Version:    5357251
+  Self Link:           /apis/networking.istio.io/v1alpha3/namespaces/bookinfo/gateways/bookinfo-gateway
+  UID:                 d0894e20-527a-4575-8c9f-3ce4270e734e
+Spec:
+  Selector:
+    Istio:  ingressgateway
+  Servers:
+    Hosts:
+      *
+    Port:
+      Name:      http
+      Number:    80
+      Protocol:  HTTP
+Events:          <none>
+----
+
+
+----
+oc describe VirtualService
+Name:         bookinfo
+Namespace:    bookinfo
+Labels:       <none>
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"bookinfo","namespace":"bookinfo"...
+API Version:  networking.istio.io/v1alpha3
+Kind:         VirtualService
+Metadata:
+  Creation Timestamp:  2020-02-26T03:44:29Z
+  Generation:          1
+  Resource Version:    5357253
+  Self Link:           /apis/networking.istio.io/v1alpha3/namespaces/bookinfo/virtualservices/bookinfo
+  UID:                 7955c118-c25a-4dd2-a7aa-45545793e9e7
+Spec:
+  Gateways:
+    bookinfo-gateway
+  Hosts:
+    *
+  Http:
+    Match:
+      Uri:
+        Exact:  /productpage
+      Uri:
+        Exact:  /login
+      Uri:
+        Exact:  /logout
+      Uri:
+        Prefix:  /api/v1/products
+    Route:
+      Destination:
+        Host:  productpage
+        Port:
+          Number:  9080
+Events:            <none>
+apiVersion: "config.istio.io/v1alpha2"
+kind: handler
+metadata:
+  name: denyreviewsv3handler
+spec:
+  compiledAdapter: denier
+  params:
+    status:
+      code: 7
+      message: Not allowed
+apiVersion: "config.istio.io/v1alpha2"
+kind: instance
+metadata:
+  name: denyreviewsv3request
+spec:
+  compiledTemplate: checknothing
+apiVersion: "config.istio.io/v1alpha2"
+kind: rule
+metadata:
+  name: denyreviewsv3
+spec:
+  match: destination.labels["app"] == "ratings" && source.labels["app"]=="reviews" && source.labels["version"] == "v3"
+  actions:
+  - handler: denyreviewsv3handler
+    instances: [ denyreviewsv3request ]
+----
+
+
+----
+oc describe DestinationRule
+Name:         details
+Namespace:    bookinfo
+Labels:       <none>
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"networking.istio.io/v1alpha3","kind":"DestinationRule","metadata":{"annotations":{},"name":"details","namespace":"bookinfo"...
+API Version:  networking.istio.io/v1alpha3
+Kind:         DestinationRule
+Metadata:
+  Creation Timestamp:  2020-02-26T03:46:52Z
+  Generation:          1
+  Resource Version:    5359178
+  Self Link:           /apis/networking.istio.io/v1alpha3/namespaces/bookinfo/destinationrules/details
+  UID:                 b608e293-46f2-4a2a-8f23-56dcf0d7ad86
+Spec:
+  Host:  details
+  Subsets:
+    Labels:
+      Version:  v1
+    Name:       v1
+    Labels:
+      Version:  v2
+    Name:       v2
+Events:         <none>
+
+
+Name:         productpage
+Namespace:    bookinfo
+Labels:       <none>
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"networking.istio.io/v1alpha3","kind":"DestinationRule","metadata":{"annotations":{},"name":"productpage","namespace":"booki...
+API Version:  networking.istio.io/v1alpha3
+Kind:         DestinationRule
+Metadata:
+  Creation Timestamp:  2020-02-26T03:46:52Z
+  Generation:          1
+  Resource Version:    5359175
+  Self Link:           /apis/networking.istio.io/v1alpha3/namespaces/bookinfo/destinationrules/productpage
+  UID:                 d18a3b84-02c2-438e-ae63-49e5fcecc8d7
+Spec:
+  Host:  productpage
+  Subsets:
+    Labels:
+      Version:  v1
+    Name:       v1
+Events:         <none>
+
+
+Name:         ratings
+Namespace:    bookinfo
+Labels:       <none>
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"networking.istio.io/v1alpha3","kind":"DestinationRule","metadata":{"annotations":{},"name":"ratings","namespace":"bookinfo"...
+API Version:  networking.istio.io/v1alpha3
+Kind:         DestinationRule
+Metadata:
+  Creation Timestamp:  2020-02-26T03:46:52Z
+  Generation:          1
+  Resource Version:    5359177
+  Self Link:           /apis/networking.istio.io/v1alpha3/namespaces/bookinfo/destinationrules/ratings
+  UID:                 639fa9e7-abed-4239-8521-c039b84337f9
+Spec:
+  Host:  ratings
+  Subsets:
+    Labels:
+      Version:  v1
+    Name:       v1
+    Labels:
+      Version:  v2
+    Name:       v2
+    Labels:
+      Version:  v2-mysql
+    Name:       v2-mysql
+    Labels:
+      Version:  v2-mysql-vm
+    Name:       v2-mysql-vm
+Events:         <none>
+
+
+Name:         reviews
+Namespace:    bookinfo
+Labels:       <none>
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"networking.istio.io/v1alpha3","kind":"DestinationRule","metadata":{"annotations":{},"name":"reviews","namespace":"bookinfo"...
+API Version:  networking.istio.io/v1alpha3
+Kind:         DestinationRule
+Metadata:
+  Creation Timestamp:  2020-02-26T03:46:52Z
+  Generation:          1
+  Resource Version:    5359176
+  Self Link:           /apis/networking.istio.io/v1alpha3/namespaces/bookinfo/destinationrules/reviews
+  UID:                 1f523c02-4a42-40fa-9009-9529f8b7a059
+Spec:
+  Host:  reviews
+  Subsets:
+    Labels:
+      Version:  v1
+    Name:       v1
+    Labels:
+      Version:  v2
+    Name:       v2
+    Labels:
+      Version:  v3
+    Name:       v3
+Events:         <none>
+----
+
 image:../images/mixerrule.png[title="Whitelisting and Blacklisting"]

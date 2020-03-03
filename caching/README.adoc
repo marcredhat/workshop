@@ -11,10 +11,10 @@ This mission covers:
 See https://github.com/snowdrop/cache-example
 ----
 
-=== Red Hat Data Grid is also usable as a `NoSql database`, or even 
-an `event broker` and 
-fits great in `integration/migration` that use Fuse/Camel
 
+=== Red Hat Data Grid is also usable as a `NoSql database`, or even an `event broker` 
+
+Red Hat Data Grid also fits great in integration/migration scenarios.
 
 ----
 See 

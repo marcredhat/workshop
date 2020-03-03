@@ -12,6 +12,10 @@ Create a new project for the service mesh control plane
 oc new-project marc-service-mesh
 ----
 
+----
+Click on "Create instance" under "Istio Service Mesh Control Plane"
+----
+
 image:../images/1installservicemeshcontrolplane.png[title="Install control plane"]
 
 ----

@@ -169,3 +169,25 @@ done
 200
 ----
 
+
+----
+Browse to http://istio-ingressgateway-marc-service-mesh.apps.ocp43.local/productpage
+----
+
+
+----
+oc get route -n marc-service-mesh
+NAME                   HOST/PORT                                                 PATH   SERVICES               PORT    TERMINATION   WILDCARD
+grafana                grafana-marc-service-mesh.apps.ocp43.local                       grafana                <all>   reencrypt     None
+istio-ingressgateway   istio-ingressgateway-marc-service-mesh.apps.ocp43.local          istio-ingressgateway   8080                  None
+jaeger                 jaeger-marc-service-mesh.apps.ocp43.local                        jaeger-query           <all>   reencrypt     None
+kiali                  kiali-marc-service-mesh.apps.ocp43.local                         kiali                  <all>   reencrypt     None
+prometheus             prometheus-marc-service-mesh.apps.ocp43.local                    prometheus             <all>   reencrypt     None
+----
+
+
+
+----
+Browse to http://kiali-marc-service-mesh.apps.ocp43.local
+----
+

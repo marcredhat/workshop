@@ -15,10 +15,7 @@ We will show how to create a solution that:
 - reduces operational cost and complexity via on-demand business logic execution and elastic scaling.
 ----
 
-----
-Scenario: 
-https://raw.githubusercontent.com/marcredhat/dataprep/master/workflow.png
-----
+image:../images/workflow.png[title="Data pipeline with Ceph notifications and Knative"]
 
 
 ----

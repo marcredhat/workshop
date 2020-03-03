@@ -188,6 +188,6 @@ prometheus             prometheus-marc-service-mesh.apps.ocp43.local            
 
 
 ----
-Browse to http://kiali-marc-service-mesh.apps.ocp43.local
+Browse to https://kiali-marc-service-mesh.apps.ocp43.local
 ----
 

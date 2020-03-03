@@ -148,4 +148,24 @@ virtualservice.networking.istio.io/reviews created
 ----
 
 
+----
+Generate traffic
+export GATEWAY_URL=$(oc -n marc-service-mesh get route istio-ingressgateway -o jsonpath='{.spec.host}')
+echo "GATEWAY_URL=$GATEWAY_URL"
+GATEWAY_URL=istio-ingressgateway-marc-service-mesh.apps.ocp43.local
+
+cat ./generate-traffic.sh
+#!/bin/bash
+
+while [ true ]
+do
+    curl -o /dev/null -s -w "%{http_code}\n" http://$GATEWAY_URL/productpage
+    sleep .1
+done
+
+./generate-traffic.sh
+200
+200
+200
+----
 

@@ -149,6 +149,15 @@ virtualservice.networking.istio.io/reviews created
 
 
 ----
+oc create -f 3-destination-rule-all-mtls.yaml
+destinationrule.networking.istio.io/productpage created
+destinationrule.networking.istio.io/reviews created
+destinationrule.networking.istio.io/ratings created
+destinationrule.networking.istio.io/details created
+----
+
+
+----
 Generate traffic
 export GATEWAY_URL=$(oc -n marc-service-mesh get route istio-ingressgateway -o jsonpath='{.spec.host}')
 echo "GATEWAY_URL=$GATEWAY_URL"

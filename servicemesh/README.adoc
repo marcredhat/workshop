@@ -85,32 +85,6 @@ Spec:
         Host:  productpage
         Port:
           Number:  9080
-Events:            <none>
-apiVersion: "config.istio.io/v1alpha2"
-kind: handler
-metadata:
-  name: denyreviewsv3handler
-spec:
-  compiledAdapter: denier
-  params:
-    status:
-      code: 7
-      message: Not allowed
-apiVersion: "config.istio.io/v1alpha2"
-kind: instance
-metadata:
-  name: denyreviewsv3request
-spec:
-  compiledTemplate: checknothing
-apiVersion: "config.istio.io/v1alpha2"
-kind: rule
-metadata:
-  name: denyreviewsv3
-spec:
-  match: destination.labels["app"] == "ratings" && source.labels["app"]=="reviews" && source.labels["version"] == "v3"
-  actions:
-  - handler: denyreviewsv3handler
-    instances: [ denyreviewsv3request ]
 ----
 
 
@@ -222,4 +196,36 @@ Spec:
 Events:         <none>
 ----
 
+
+----
+Create a rule that denies traffic from the specified sources to version of reviews
+
+apiVersion: "config.istio.io/v1alpha2"
+kind: handler
+metadata:
+  name: denyreviewsv3handler
+spec:
+  compiledAdapter: denier
+  params:
+    status:
+      code: 7
+      message: Not allowed
+---
+apiVersion: "config.istio.io/v1alpha2"
+kind: instance
+metadata:
+  name: denyreviewsv3request
+spec:
+  compiledTemplate: checknothing
+---
+apiVersion: "config.istio.io/v1alpha2"
+kind: rule
+metadata:
+  name: denyreviewsv3
+spec:
+  match: destination.labels["app"] == "ratings" && source.labels["app"]=="reviews" && source.labels["version"] == "v3"
+  actions:
+  - handler: denyreviewsv3handler
+    instances: [ denyreviewsv3request ]
+----
 image:../images/mixerrule.png[title="Whitelisting and Blacklisting"]

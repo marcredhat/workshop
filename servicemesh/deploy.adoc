@@ -46,3 +46,16 @@ jaeger-694b9d459-xjz6v                   2/2     Running   0          3m18s
 kiali-86dc5bd4df-vhd5d                   1/1     Running   0          62s
 prometheus-5c7bffd48d-gfs9j              2/2     Running   0          3m33s
 ----
+
+----
+Click on "Create instance" under "Istio Service Mesh Member Roll"
+----
+
+----
+Replace namespace with the name of the service mesh control plane project you created
+Under members, add the names of the projects where you'll deploy service mesh apps managed by the above control plane.
+(With OpenShift Service Mesh, you can have multiple control planes each managing multiple namespaces).
+----
+
+image:../images/1installservicemeshcontrolplane.png[title="Install control plane"]
+

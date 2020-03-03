@@ -13,7 +13,8 @@ If you just want to quickly test without using Operators,
 I created a quick demo using CodeReady Containers so you can run everything on your laptop:
 
 
-(Please read https://blog.openshift.com/requesting-and-installing-lets-encrypt-certificates-for-openshift-4/)
+(Please read 
+https://blog.openshift.com/requesting-and-installing-lets-encrypt-certificates-for-openshift-4/)
 
 
 https://m.youtube.com/watch?v=u_tBNX3cQDA

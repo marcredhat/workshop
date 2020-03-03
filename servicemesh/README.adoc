@@ -287,9 +287,6 @@ rule.config.istio.io "denyreviewsv3" deleted
 
 
 ----
-
-
-----
 Use Kiali to check that traffic is now allowed to go
 from version 3 of reviews 
 to the ratings workload 

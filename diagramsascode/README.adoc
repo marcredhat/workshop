@@ -24,5 +24,6 @@ pip install diagrams --user
 Generated diagram
 ----
 
+image:../images/openshift_4.3_with_external_load_balancer.png[title="Generated diagram"]
 
 

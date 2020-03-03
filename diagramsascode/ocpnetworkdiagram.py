@@ -36,8 +36,8 @@ with Diagram("OpenShift 4.3 with external load balancer", show=False):
 
         
     with Cluster("Developers and Admins"):
-        devs_and_admins = [User("Developers"),
-                           User("Admins")]
+        devs_and_admins = User("Developers")
+        devs_and_admins - [User("Admins")]
         
     with Cluster("Users"):
         users = [User("Users")]

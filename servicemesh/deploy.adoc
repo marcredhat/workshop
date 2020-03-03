@@ -57,5 +57,5 @@ Under members, add the names of the projects where you'll deploy service mesh ap
 (With OpenShift Service Mesh, you can have multiple control planes each managing multiple namespaces).
 ----
 
-image:../images/1installservicemeshcontrolplane.png[title="Install control plane"]
+image:../images/3installservicemeshcontrolplane.png[title="Install control plane"]
 

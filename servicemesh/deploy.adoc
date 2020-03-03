@@ -13,3 +13,9 @@ oc new-project marc-service-mesh
 ----
 
 image:../images/1installservicemeshcontrolplane.png[title="Install control plane"]
+
+----
+Replace namespace with the name of the project you just created
+----
+
+image:../images/2installservicemeshcontrolplane.png[title="Install control plane"]

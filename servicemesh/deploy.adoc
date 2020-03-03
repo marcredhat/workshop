@@ -103,6 +103,30 @@ reviews-v2-86865fc7d9-qksh2       1/1     Running   0          56s   app=reviews
 reviews-v3-8d4cbbbbf-b5c5m        1/1     Running   0          56s   app=reviews,pod-template-hash=8d4cbbbbf,version=v3
 ----
 
+----
+Note that pods only have 1 container each, so istio-proxy was not yet injected.
+Delete the pods, they will be automatically recreated by the Deployment, this time with istio-proxy in each pod.
+oc delete pods --all
+pod "details-v1-789c5f58f4-cscj4" deleted
+pod "productpage-v1-856c8cc5d8-sldlm" deleted
+pod "ratings-v1-5786768978-s5ksf" deleted
+pod "reviews-v1-5874566865-47mlc" deleted
+pod "reviews-v2-86865fc7d9-qksh2" deleted
+pod "reviews-v3-8d4cbbbbf-b5c5m" deleted
+----
+
+
+----
+oc get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+details-v1-789c5f58f4-q5zwd       2/2     Running   0          2m37s
+productpage-v1-856c8cc5d8-d6pjm   2/2     Running   0          2m37s
+ratings-v1-5786768978-n6mgv       2/2     Running   0          2m37s
+reviews-v1-5874566865-jpbqp       2/2     Running   0          2m37s
+reviews-v2-86865fc7d9-gwwsd       2/2     Running   0          2m37s
+reviews-v3-8d4cbbbbf-8rk6d        2/2     Running   0          2m37s
+----
+
 
 ----
 oc create -f 1-bookinfo-gateway.yaml

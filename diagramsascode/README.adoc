@@ -10,7 +10,7 @@ pip install diagrams --user
 ----
 
 
------
+----
 2) wget https://raw.githubusercontent.com/marcredhat/workshop/master/diagramsascode/ocpnetworkdiagram.py
 ----
 
@@ -23,6 +23,7 @@ pip install diagrams --user
 ----
 Generated diagram
 ----
+
 
 image:../images/openshift_4.3_with_external_load_balancer.png[title="Generated diagram"]
 

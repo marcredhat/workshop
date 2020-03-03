@@ -12,14 +12,11 @@ or IP-based white or black listing.
 
 
 ----
-Ensure that policy check are NOT disabled
+Ensure that policy checks are NOT disabled
 oc get cm -n marc-istio-system istio -o jsonpath='{.data.mesh}' | grep disablePolicyChecks
 disablePolicyChecks: false
 ----
 
-----
-Example: block traffic to version 3 of reviews
-----
 
 ----
 oc describe Gateway

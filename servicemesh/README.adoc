@@ -275,3 +275,21 @@ destination.labels["app"] == "ratings" && source.labels["app"]=="reviews" && sou
 
 
 image:../images/mixerrule.png[title="Whitelisting and Blacklisting"]
+
+
+----
+Remove the blacklisting rule:
+oc delete -f mixer-rule-deny-label.yaml
+handler.config.istio.io "denyreviewsv3handler" deleted
+instance.config.istio.io "denyreviewsv3request" deleted
+rule.config.istio.io "denyreviewsv3" deleted
+----
+
+----
+----
+Use Kiali to check that traffic is now allowed to go
+from version 3 of reviews 
+to the ratings workload 
+----
+
+image:../images/withoutmixerrule.png[title="Whitelisting and Blacklisting"]

@@ -1,0 +1,33 @@
+== Kafka/Knative labs
+
+
+----
+Use case:
+modernize batch processing while minimizing adoption risk and preserving existing investments. Scenarios that traditionally rely on scheduled batch processing, such as transaction reconciliation, face a number of typical challenges:
+- high latency - there is an inherent time gap between data availability and processing;
+- security and reliability risks of traditional file sharing infrastructure and protocols (shared folders, FTP/SFTP)
+- scaling due to sequential execution of batch jobs;
+
+We will show how to create a solution that:
+- minimizes operational risk through the use of highly available storage, with seamlessly integrated security controls
+- reduces latency by using the event-driven capabilities of the storage layer
+- increases throughput by parallelizing data processing while observing data affinity limitations
+- reduces operational cost and complexity via on-demand business logic execution and elastic scaling.
+----
+
+----
+Scenario: 
+https://raw.githubusercontent.com/marcredhat/dataprep/master/workflow.png
+----
+
+
+----
+Video: 
+https://m.youtube.com/watch?feature=youtu.be&v=zhax8jUDMLU
+----
+
+
+----
+How this was built (step-by-step): 
+https://github.com/guimou/dataprep-code/blob/master/examples/xray/build-demo.adoc
+----

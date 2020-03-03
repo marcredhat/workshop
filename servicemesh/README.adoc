@@ -241,4 +241,37 @@ spec:
   - handler: denyreviewsv3handler
     instances: [ denyreviewsv3request ]
 ----
+
+
+----
+Generate traffic
+export GATEWAY_URL=$(oc -n marc-istio-system  get route istio-ingressgateway -o jsonpath='{.spec.host}')
+
+echo "GATEWAY_URL=$GATEWAY_URL"
+GATEWAY_URL=istio-ingressgateway-marc-istio-system.apps.ocp43.local
+
+cat generate-traffic.sh
+#!/bin/bash
+
+while [ true ]
+do
+    curl -o /dev/null -s -w "%{http_code}\n" http://$GATEWAY_URL/productpage
+    sleep .1
+done
+----
+
+
+----
+Use Kiali to check that no traffic is going 
+from version 3 of reviews 
+to the ratings workload 
+as per our blacklisting rule above.
+
+The rule matches requests coming from the workload reviews with label v3 to the workload ratings.
+
+This rule uses the denier adapter to deny requests coming from version v3 of the reviews service:
+destination.labels["app"] == "ratings" && source.labels["app"]=="reviews" && source.labels["version"] == "v3"
+----
+
+
 image:../images/mixerrule.png[title="Whitelisting and Blacklisting"]

@@ -1,0 +1,22 @@
+== Certificate rotation for OpenShift and Service Mesh using Operators
+
+
+----
+https://blog.openshift.com/self-serviced-end-to-end-encryption-for-kubernetes-applications-part-2-a-practical-example/
+
+https://developer.ibm.com/technologies/containers/tutorials/automatic-security-certificate-renewal-openshift/
+----
+
+
+----
+If you just want to quickly test without using Operators, 
+I created a quick demo using CodeReady Containers so you can run everything on your laptop:
+
+
+(Please read https://blog.openshift.com/requesting-and-installing-lets-encrypt-certificates-for-openshift-4/)
+
+
+https://m.youtube.com/watch?v=u_tBNX3cQDA
+
+https://github.com/marcredhat/crcdemos/blob/master/letsencypt/certs.sh
+----

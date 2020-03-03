@@ -198,6 +198,19 @@ Events:         <none>
 
 
 ----
+As we'll create white/blacklisting rules based on our pods' labels, let's see what the labels are:
+oc get pods --show-labels
+NAME                              READY   STATUS    RESTARTS   AGE   LABELS
+details-v1-789c5f58f4-p5zlt       2/2     Running   0          13h   app=details,pod-template-hash=789c5f58f4,version=v1
+productpage-v1-856c8cc5d8-kn8s7   2/2     Running   0          13h   app=productpage,pod-template-hash=856c8cc5d8,version=v1
+ratings-v1-5786768978-mf6zl       2/2     Running   0          38m   app=ratings,pod-template-hash=5786768978,version=v1
+reviews-v1-5874566865-kp2jm       2/2     Running   0          13h   app=reviews,pod-template-hash=5874566865,version=v1
+reviews-v2-86865fc7d9-b7kbw       2/2     Running   0          13h   app=reviews,pod-template-hash=86865fc7d9,version=v2
+reviews-v3-8d4cbbbbf-zmhjk        2/2     Running   0          13h   app=reviews,pod-template-hash=8d4cbbbbf,version=v3
+----
+
+
+----
 Create a rule that denies traffic from the specified sources to version of reviews
 
 apiVersion: "config.istio.io/v1alpha2"

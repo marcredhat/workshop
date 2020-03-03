@@ -40,7 +40,7 @@ with Diagram("OpenShift 4.3 with external load balancer", show=False):
                            User("Admins")]
         
     with Cluster("Users"):
-        users= [User("Users")]
+        users = [User("Users")]
         
     with Cluster("Operations VLAN"):
         operations_VLAN = [Server("GitlabCI"),

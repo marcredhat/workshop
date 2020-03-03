@@ -1,7 +1,7 @@
 == Caching
 
 
-=== use Red Hat Data Grid for Openshift as a cache,to increase the response time of your applications
+=== use Red Hat Data Grid for Openshift as a cache, to increase the response time of your applications
 
 ----
 This mission covers:
@@ -19,4 +19,4 @@ Red Hat Data Grid also fits great in integration/migration scenarios.
 ----
 See 
 https://servicesblog.redhat.com/2020/01/27/consulting-tld-perform-remote-caches-with-jboss-fuse-and-red-hat-data-grid/amp/
----
+----

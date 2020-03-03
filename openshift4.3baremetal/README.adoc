@@ -1,0 +1,7 @@
+
+----
+This is how I built my OpenShift 4.3 lab on one baremetal server using KVM/Libvirt:
+https://github.com/marcredhat/upi/blob/master/ocp43.adoc
+
+Going through this exercise can help understand/practice the networking requirements/configurations.
+----

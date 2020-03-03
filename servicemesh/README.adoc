@@ -294,3 +294,80 @@ to the ratings workload
 
 
 image:../images/withoutmixerrule.png[title="Whitelisting and Blacklisting"]
+
+
+== Control outbound traffic
+
+
+----
+Because all outbound traffic from an Istio-enabled pod is redirected to its sidecar proxy by default, 
+accessibility of URLs outside of the cluster depends on the configuration of the proxy. 
+By default, Istio configures the Envoy proxy to passthrough requests for unknown services. 
+Although this provides a convenient way to get started with Istio, 
+configuring stricter control is usually preferable.
+See https://istio.io/docs/tasks/traffic-management/egress/egress-control/
+----
+
+
+----
+oc get configmap istio -n default -o yaml | sed 's/mode: ALLOW_ANY/mode: REGISTRY_ONLY/g' | oc replace -n default -f -
+----
+
+----
+Check traffic to www.yahoo.com is NOT allowed
+
+oc get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+details-v1-789c5f58f4-p5zlt       2/2     Running   0          14h
+productpage-v1-856c8cc5d8-kn8s7   2/2     Running   0          14h
+ratings-v1-5786768978-mf6zl       2/2     Running   0          84m
+reviews-v1-5874566865-kp2jm       2/2     Running   0          14h
+reviews-v2-86865fc7d9-b7kbw       2/2     Running   0          14h
+reviews-v3-8d4cbbbbf-zmhjk        2/2     Running   0          14h
+
+
+export SOURCE_POD=ratings-v1-5786768978-mf6zl
+
+oc exec -it $SOURCE_POD -c ratings -- curl -I https://www.yahoo.com | grep "HTTP/"
+----
+
+----
+Create a ServiceEntry to allow traffic to www.yahoo.com
+oc apply -f - <<EOF
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: www.yahoo.com
+spec:
+  hosts:
+  - www.yahoo.com
+  ports:
+  - number: 443
+    name: https
+    protocol: HTTPS
+  resolution: DNS
+  location: MESH_EXTERNAL
+EOF
+----
+
+
+----
+Check traffic to www.yahoo.com is now allowed
+
+Delete the pod from which you test external access. It will be recreated automatically by the Deployment.
+
+oc delete $SOURCE_POD
+
+oc get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+details-v1-789c5f58f4-p5zlt       2/2     Running   0          14h
+productpage-v1-856c8cc5d8-kn8s7   2/2     Running   0          14h
+ratings-v1-5236768977-mfabd       2/2     Running   0          84m
+reviews-v1-5874566865-kp2jm       2/2     Running   0          14h
+reviews-v2-86865fc7d9-b7kbw       2/2     Running   0          14h
+reviews-v3-8d4cbbbbf-zmhjk        2/2     Running   0          14h
+
+export SOURCE_POD=ratings-v1-5236768977-mfabd
+
+oc exec -it $SOURCE_POD -c ratings -- curl -I https://www.yahoo.com | grep "HTTP/"
+----

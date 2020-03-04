@@ -5,6 +5,7 @@ We'll cover:
 2) Installing OpenShift Service Mesh 
 3) Securing access to services - attribute or IP based whitelisting/blacklisting
 4) Securing outbound traffic
+5) Runtime security using Sysdig / Falco
 ----
 
 == 1) Install OpenShift 4.3.1
@@ -389,3 +390,7 @@ export SOURCE_POD=ratings-v1-5236768977-mfabd
 
 oc exec -it $SOURCE_POD -c ratings -- curl -I https://www.yahoo.com | grep "HTTP/"
 ----
+
+
+== 5) Runtime security using Sysdig / Falco
+Step-by-step instructions at https://github.com/marcredhat/crcdemos/blob/master/sysdig/agent/README.adoc

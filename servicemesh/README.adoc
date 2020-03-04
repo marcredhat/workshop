@@ -2,7 +2,7 @@
 ----
 We'll cover:
 1) OpenShift 4.3.1 on one baremetal server using KVM/libvirt
-2) Install OpenShift Service Mesh 
+2) Installing OpenShift Service Mesh 
 3) Securing access to services - attribute or IP based whitelisting/blacklisting
 4) Securing outbound traffic
 ----

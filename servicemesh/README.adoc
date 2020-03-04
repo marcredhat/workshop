@@ -1,6 +1,20 @@
 
+== 1) Install OpenShift 4.3.1
 
-== White/Black Listing
+----
+Step-by-step instructions on how to setup OpenShift 4.3.1 on one baremetal server
+using KVM/libvirt at 
+https://github.com/marcredhat/upi/blob/master/ocp43.adoc
+----
+
+== 2) Install OpenShift Service Mesh 
+
+----
+Step-by-step instructions at https://github.com/marcredhat/workshop/blob/master/servicemesh/deploy.adoc
+----
+
+
+== 3) Secure access to services - White/Black Listing
 
 
 ----
@@ -293,7 +307,7 @@ to the ratings workload
 image:../images/withoutmixerrule.png[title="Whitelisting and Blacklisting"]
 
 
-== Control outbound traffic
+== Secure outbound traffic
 
 
 ----

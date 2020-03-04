@@ -66,7 +66,7 @@ oc new-project marc-bookinfo
 
 
 ----
-git clone https://github.com/marcredhat/istio-demo.git
+git clone https://github.com/marcredhat/istio-demo.git -b new_branch
 cd istio-demo/bookinfo/
 ----
 

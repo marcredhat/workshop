@@ -314,7 +314,7 @@ to the ratings workload
 image:../images/withoutmixerrule.png[title="Whitelisting and Blacklisting"]
 
 
-== Securing outbound traffic
+== 4) Securing outbound traffic
 
 
 ----

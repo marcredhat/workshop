@@ -1,4 +1,12 @@
 
+----
+We'll cover:
+1) OpenShift 4.3.1 on one baremetal server using KVM/libvirt
+2) Install OpenShift Service Mesh 
+3) Securing access to services - attribute or IP based whitelisting/blacklisting
+4) ecuring outbound traffic
+----
+
 == 1) Install OpenShift 4.3.1
 
 ----
@@ -14,8 +22,7 @@ Step-by-step instructions at https://github.com/marcredhat/workshop/blob/master/
 ----
 
 
-== 3) Secure access to services - White/Black Listing
-
+== 3) Securing access to services - attribute or IP based whitelisting/blacklisting
 
 ----
 This task shows how to control access to a service using 
@@ -307,7 +314,7 @@ to the ratings workload
 image:../images/withoutmixerrule.png[title="Whitelisting and Blacklisting"]
 
 
-== Secure outbound traffic
+== Securing outbound traffic
 
 
 ----

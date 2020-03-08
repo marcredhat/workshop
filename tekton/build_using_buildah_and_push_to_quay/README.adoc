@@ -1,1 +1,18 @@
 
+
+
+----
+Create role / role bindings / service account
+Create quaysecret
+Bind quay secret to the service account
+
+oc describe sa camel-k-pipeline
+Name:                camel-k-pipeline
+Namespace:           camel-pipelines
+Labels:              <none>
+Annotations:         kubectl.kubernetes.io/last-applied-configuration:
+                       {"apiVersion":"v1","kind":"ServiceAccount","metadata":{"annotations":{},"name":"camel-k-pipeline","namespace":"camel-pipelines"}}
+Image pull secrets:  marcsecretquay
+                     camel-k-pipeline-dockercfg-tmv4f
+Mountable secrets:   quaysecret
+----

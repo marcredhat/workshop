@@ -1,6 +1,11 @@
 
 
 ----
+Prerequisities: persistent storage 
+(in this lab, we are using the Local Storage Operator; details at https://github.com/marcredhat/workshop/tree/master/localstorageoperator
+----
+
+----
 wget https://raw.githubusercontent.com/marcredhat/workshop/master/tekton/workspaces_persistent_storage.yaml
 ----
 

@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  name: buildah-build-my-repo
+spec:
+  taskRef:
+    name: buildahmarc
+  podTemplate:
+    securityContext:
+       runAsUser: 0
+       fsGroup: 0
+  serviceAccountName: 'camel-k-pipeline'
+  inputs:
+    resources:
+    - name: source
+      resourceSpec:
+        type: git
+        params:
+        - name: url
+          value: https://github.com/marcredhat/containerized_ml_models
+  outputs:
+    resources:
+    - name: image
+      resourceSpec:
+        type: image
+        params:
+        - name: url
+          value: quay.io/marcf5/containerized_ml_models:0.3

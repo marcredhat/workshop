@@ -1,0 +1,20 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  creationTimestamp: "2020-03-08T05:52:26Z"
+  labels:
+    local.storage.openshift.io/owner-name: example
+    local.storage.openshift.io/owner-namespace: camel-pipelines
+  name: marcsc
+  ownerReferences:
+  - apiVersion: local.storage.openshift.io/v1
+    controller: true
+    kind: LocalVolume
+    name: example
+    uid: bd56347e-e88d-45b9-99ac-e90352ff6301
+  resourceVersion: "19167650"
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/marcsc
+  uid: 2abe2282-9e5f-4098-9022-c4bc9e219ef2
+provisioner: kubernetes.io/no-provisioner
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsume

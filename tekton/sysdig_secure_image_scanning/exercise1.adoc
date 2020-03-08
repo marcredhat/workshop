@@ -1,1 +1,25 @@
 
+----
+wget https://raw.githubusercontent.com/marcredhat/workshop/master/tekton/sysdig_secure_image_scanning/task.yaml
+wget https://raw.githubusercontent.com/marcredhat/workshop/master/tekton/sysdig_secure_image_scanning/taskrun.yaml
+oc delete -f task.yaml
+oc delete -f taskrun.yaml
+----
+
+
+----
+Edit task.yaml: 
+value: "docker.io/alpine" 
+(this should pass the Sysdig secure scan)
+or
+value: quay.io/marcf5/mltitanic 
+(this should NOT pass the Sysdig secure scan
+----
+
+
+----
+oc create -f task.yaml
+oc create  -f taskrun.yaml
+----
+
+

@@ -6,7 +6,7 @@ Create role / role bindings / service account
 (https://raw.githubusercontent.com/marcredhat/workshop/master/tekton/build_using_buildah_and_push_to_quay/sa_role_binding.yaml)
 
 
-Create quaysecret
+Create quay secret
 (https://raw.githubusercontent.com/marcredhat/workshop/master/tekton/build_using_buildah_and_push_to_quay/quaysecret.yaml)
 
 

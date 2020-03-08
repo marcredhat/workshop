@@ -1,0 +1,8 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  name: scan-image
+spec:
+  serviceAccountName: camel-k-pipeline
+  taskRef:
+    name: scan-image

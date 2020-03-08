@@ -1,9 +1,67 @@
 
+----
+See https://docs.openshift.com/container-platform/4.3/storage/persistent_storage/persistent-storage-local.html
+----
 
-https://docs.openshift.com/container-platform/4.3/storage/persistent_storage/persistent-storage-local.html
+
+----
+1. Install the Local Storage Operator
+2. Create a Local Volume (screenshots below)
+2a) Check your device path on the nodes (ssh core@worker-x.ocp43.local); in my case, it's /dev/disk/by-label/root
+2b) choose a storageClassName; in my case, marcsc
+----
+
+----
+storageClassDevices:
+    - devicePaths:
+        - /dev/disk/by-label/root
+      fsType: ext4
+      storageClassName: marcsc
+      volumeMode: Filesystem
+----
+
+
+image:../images/1localstorage.png[title="Local storage 1"]
+
+image:../images/2localstorage.png[title="Local storage 2"]
 
 
 
+----
+3) oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:camel-pipelines:local-storage-admin
+----
+
+----
+4) Ensure that /mnt/local-storage/<your storage class name> 
+exists on your nodes.
+
+In my case,
+ssh core@worker-1.ocp43.local
+[core@worker-1 ~]$
+cd /mnt/local-storage
+sudo mkdir marcsc
+----
+
+----
+Check that PVs are created
+oc get pv
+NAME                CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM                            STORAGECLASS   REASON   AGE
+local-pv-10f8b58b   100Gi      RWO            Delete           Available                                    marcsc                  123m
+local-pv-1a712043   100Gi      RWO            Delete           Available                                    marcsc                  123m
+local-pv-2c3a30c0   10Gi       RWO            Delete           Bound       camel-pipelines/maven-repo-pvc   marcsc                  123m
+local-pv-5fd5a308   10Gi       RWO            Delete           Available                                    marcsc                  123m
+local-pv-a0d32d79   10Gi       RWO            Delete           Available                                    marcsc                  123m
+local-pv-c8bb60de   100Gi      RWO            Delete           Bound       camel-pipelines/local-pvc-name   marcsc                  123m
+
+----
+
+
+----
+Create a PVC using your storage class name
+----
+
+
+----
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -15,15 +73,10 @@ spec:
   resources:
     requests:
       storage: 100Gi
-  storageClassName: marcblocksc
+  storageClassName: marcsc
+----
 
 
-ssh core@worker-1.ocp43.local
-[core@worker-1 ~]$
-cd /mnt/local-storage
-
-sudo mkdir marcblocksc
-
-oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:camel-pipelines:local-storage-admin
-
+----
 https://raw.githubusercontent.com/tektoncd/pipeline/master/examples/v1beta1/taskruns/workspace.yaml
+----

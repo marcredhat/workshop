@@ -1,0 +1,83 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"tekton.dev/v1alpha1","kind":"Task","metadata":{"annotations":{},"name":"buildah","namespace":"camel-pipelines"},"spec":{"inputs":{"params":[{"default":"quay.io/buildah/stable:latest","description":"The location of the buildah builder image.","name":"BUILDER_IMAGE"},{"default":"./Dockerfile","description":"Path to the Dockerfile to build.","name":"DOCKERFILE"},{"default":".","description":"Path to the directory to use as context.","name":"CONTEXT"},{"default":"true","description":"Verify the TLS on the registry endpoint (for push/pull to a non-TLS registry)","name":"TLSVERIFY"}],"resources":[{"name":"source","type":"git"}]},"outputs":{"resources":[{"name":"image","type":"image"}]},"steps":[{"command":["buildah","bud","--tls-verify=$(inputs.params.TLSVERIFY)","--layers","-f","$(inputs.params.DOCKERFILE)","-t","$(outputs.resources.image.url)","$(inputs.params.CONTEXT)"],"image":"$(inputs.params.BUILDER_IMAGE)","name":"build","securityContext":{"privileged":true},"volumeMounts":[{"mountPath":"/var/lib/containers","name":"varlibcontainers"}],"workingDir":"/workspace/source"},{"command":["buildah","push","--tls-verify=$(inputs.params.TLSVERIFY)","$(outputs.resources.image.url)","$(outputs.resources.image.url)"],"image":"$(inputs.params.BUILDER_IMAGE)","name":"push","securityContext":{"privileged":true},"volumeMounts":[{"mountPath":"/var/lib/containers","name":"varlibcontainers"}],"workingDir":"/workspace/source"}],"volumes":[{"emptyDir":{},"name":"varlibcontainers"}]}}
+  creationTimestamp: "2020-03-07T06:32:18Z"
+  generation: 3
+  name: buildahmarc
+  namespace: camel-pipelines
+  resourceVersion: "18574450"
+  selfLink: /apis/tekton.dev/v1beta1/namespaces/camel-pipelines/tasks/buildah
+  uid: 57ff3cde-05a6-416f-898d-ad9d4a6a8ea5
+spec:
+  Workspaces: null
+  params:
+  - default: quay.io/buildah/stable:latest
+    description: The location of the buildah builder image.
+    name: BUILDER_IMAGE
+    type: string
+  - default: ./Dockerfile
+    description: Path to the Dockerfile to build.
+    name: DOCKERFILE
+    type: string
+  - default: .
+    description: Path to the directory to use as context.
+    name: CONTEXT
+    type: string
+  - default: "true"
+    description: Verify the TLS on the registry endpoint (for push/pull to a non-TLS
+      registry)
+    name: TLSVERIFY
+    type: string
+  resources:
+    inputs:
+    - name: source
+      type: git
+    outputs:
+    - name: image
+      type: image
+  steps:
+  - command:
+    - buildah
+    - --storage-driver=vfs
+    - bud
+    - --tls-verify=$(inputs.params.TLSVERIFY)
+    - -f
+    - $(inputs.params.DOCKERFILE)
+    - -t
+    - $(outputs.resources.image.url)
+    - $(inputs.params.CONTEXT)
+    image: $(inputs.params.BUILDER_IMAGE)
+    name: build
+    resources: {}
+    securityContext:
+      privileged: true
+      allowPrivilegeEscalation: true
+      runAsUser: 0
+    volumeMounts:
+    - mountPath: /var/lib/containers
+      name: varlibcontainers
+    workingDir: /workspace/source
+  - command:
+    - buildah
+    - --storage-driver=vfs
+    - push
+    - --tls-verify=$(inputs.params.TLSVERIFY)
+    - $(outputs.resources.image.url)
+    - $(outputs.resources.image.url)
+    image: $(inputs.params.BUILDER_IMAGE)
+    name: push
+    resources: {}
+    securityContext:
+      privileged: true
+      allowPrivilegeEscalation: true
+      runAsUser: 0
+    volumeMounts:
+    - mountPath: /var/lib/containers
+      name: varlibcontainers
+    workingDir: /workspace/source
+  volumes:
+  - emptyDir: {}
+    name: varlibcontainers

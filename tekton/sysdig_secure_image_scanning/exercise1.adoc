@@ -28,3 +28,8 @@ oc create  -f taskrun.yaml
 ----
 
 
+image:../../images/2scanpass.png[title="Scan pass"]
+
+image:../../images/1scanfail.png[title="Scan fail"]
+
+

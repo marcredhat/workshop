@@ -10,3 +10,14 @@ edit taskrun_build_using_buildah_and_push_to_quay.yaml; change the tag of the ge
 (e.g. value: quay.io/marcf5/containerized_ml_models:0.3)
 oc create -f taskrun_build_using_buildah_and_push_to_quay.yaml
 ----
+
+----
+oc get pod
+NAME                                             READY   STATUS      RESTARTS   AGE
+buildah-build-my-repo-pod-v5t62                  0/5     Init:0/4    0          7s
+----
+
+
+
+
+

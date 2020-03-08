@@ -1,1 +1,29 @@
 
+
+https://docs.openshift.com/container-platform/4.3/storage/persistent_storage/persistent-storage-local.html
+
+
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: local-pvc-name
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: marcblocksc
+
+
+ssh core@worker-1.ocp43.local
+[core@worker-1 ~]$
+cd /mnt/local-storage
+
+sudo mkdir marcblocksc
+
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:camel-pipelines:local-storage-admin
+
+https://raw.githubusercontent.com/tektoncd/pipeline/master/examples/v1beta1/taskruns/workspace.yaml

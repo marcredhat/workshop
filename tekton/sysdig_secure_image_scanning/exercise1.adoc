@@ -16,6 +16,11 @@ value: quay.io/marcf5/mltitanic
 (this should NOT pass the Sysdig secure scan
 ----
 
+----
+Edit task.yaml: 
+Use your Sysdig Secure token from https://secure.sysdig.com (Settings / Sysdig Secure API Token)
+----
+
 
 ----
 oc create -f task.yaml

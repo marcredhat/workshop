@@ -51,4 +51,4 @@ tekton-pvc-name   Bound         local-pv-1a712043   100Gi      RWO            ma
 ----
 
 
-image:../images/1workspacespersistentstorage.png[title="Workspaces persistent storage 1"]
+image:../../images/1workspacespersistentstorage.png[title="Workspaces persistent storage 1"]

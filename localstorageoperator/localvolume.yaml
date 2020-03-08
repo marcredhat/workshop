@@ -1,0 +1,44 @@
+apiVersion: local.storage.openshift.io/v1
+kind: LocalVolume
+metadata:
+  creationTimestamp: '2020-03-08T03:56:47Z'
+  finalizers:
+    - storage.openshift.com/local-volume-protection
+  generation: 10
+  name: example
+  namespace: camel-pipelines
+  resourceVersion: '19155806'
+  selfLink: >-
+    /apis/local.storage.openshift.io/v1/namespaces/camel-pipelines/localvolumes/example
+  uid: bd56347e-e88d-45b9-99ac-e90352ff6301
+spec:
+  logLevel: Normal
+  managementState: Managed
+  storageClassDevices:
+    - devicePaths:
+        - /dev/disk/by-label/root
+      fsType: ext4
+      storageClassName: marcsc
+      volumeMode: Filesystem
+status:
+  conditions:
+    - lastTransitionTime: '2020-03-08T05:28:25Z'
+      message: Ready
+      status: 'True'
+      type: Available
+  generations:
+    - group: apps
+      hash: ''
+      lastGeneration: 1
+      name: example-local-provisioner
+      namespace: camel-pipelines
+      resource: DaemonSet
+    - group: apps
+      hash: ''
+      lastGeneration: 1
+      name: example-local-diskmaker
+      namespace: camel-pipelines
+      resource: DaemonSet
+  managementState: Managed
+  observedGeneration: 9
+  readyReplicas: 0

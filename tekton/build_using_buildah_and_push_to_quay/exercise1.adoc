@@ -19,5 +19,9 @@ buildah-build-my-repo-pod-v5t62                  0/5     Init:0/4    0          
 
 
 
+image:../../images/1buildahandpush.png[title="Buildah and push 1"]
+
+
+image:../../images/2buildahandpush.png[title="Buildah and push 2"]
 
 

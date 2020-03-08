@@ -50,3 +50,5 @@ maven-repo-pvc    Bound         local-pv-2c3a30c0   10Gi       RWO            ma
 tekton-pvc-name   Bound         local-pv-1a712043   100Gi      RWO            marcsc         7s
 ----
 
+
+image:../images/1workspacespersistentstorage.png[title="Workspaces persistent storage 1"]

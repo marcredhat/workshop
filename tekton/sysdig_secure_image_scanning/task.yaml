@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: scan-image
+spec:
+  steps:
+  - name: scan-image-step
+    image: sysdiglabs/secure-image-scanning:latest
+    env:
+    - name: IMAGE_TO_SCAN
+      #value: "docker.io/alpine"
+      value: quay.io/marcf5/mltitanic
+    - name: SYSDIG_SECURE_TOKEN
+      value: <Sysdig secure token from https://secure.sysdig.com (Settings/Sysdig Secure API Token>

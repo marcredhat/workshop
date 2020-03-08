@@ -1,1 +1,12 @@
+----
+wget https://raw.githubusercontent.com/marcredhat/workshop/master/tekton/build_using_buildah_and_push_to_quay/task_build_using_buildah_and_push_to_quay.yaml
+wget https://raw.githubusercontent.com/marcredhat/workshop/master/tekton/build_using_buildah_and_push_to_quay/taskrun_build_using_buildah_and_push_to_quay.yaml
 
+oc delete  -f task_build_using_buildah_and_push_to_quay.yaml
+oc delete  -f taskrun_build_using_buildah_and_push_to_quay.yaml
+
+oc create  -f task_build_using_buildah_and_push_to_quay.yaml
+edit taskrun_build_using_buildah_and_push_to_quay.yaml; change the tag of the generated image
+(e.g. value: quay.io/marcf5/containerized_ml_models:0.3)
+oc create -f taskrun_build_using_buildah_and_push_to_quay.yaml
+----

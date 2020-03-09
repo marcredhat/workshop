@@ -25,7 +25,6 @@ oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/locals
 ----
 
 
-
 ----
 # Create MySQL PVC for the Wordpress - MySQL stateful app
 # Note that we are using that file below uses the storage class created by the Local Storage Operator (marcsc)
@@ -46,3 +45,6 @@ Issues:
 Solved as follows:
 kubectl exec wordpress-mysql-7697fd495-48r9z -- chmod -R 755 /var
 ----
+
+
+image:../../images/1wordpress.png[title="Wordpress MySQL stateful app"]

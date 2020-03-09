@@ -12,7 +12,7 @@ spec:
         dnstools: dnstools-node
       containers:
         - name: dnstools
-          image: tutum/dnstools
+          image: tutum/dnsutils
           command:
           - bin/sleep
           - infinity

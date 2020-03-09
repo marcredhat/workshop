@@ -16,10 +16,20 @@ oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/locals
 oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/wordpress-deployment-with-storage-class-created-by-LocalStorageOperator.yaml
 ----
 
+
+
 ----
-# Create PVC for the Wordpress - MySQL stateful app
+# Create MySQL PVC for the Wordpress - MySQL stateful app
 # Note that we are using that file below uses the storage class created by the Local Storage Operator (marcsc)
 oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/pvc_with_storage_class_created_by_local_storage_operator.yaml
+----
+
+
+
+----
+# Create MySQL PVC for the Wordpress - MySQL stateful app
+# Note that we are using that file below uses the storage class created by the Local Storage Operator (marcsc)
+oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/wordpress-pvc.yaml
 ----
 
 

@@ -48,6 +48,16 @@ Usually, the client DNS chooses the first DNS record.
 
 
 ----
+oc expose svc/nginx
+
+oc get route
+NAME              HOST/PORT                                          PATH   SERVICES          PORT   TERMINATION   WILDCARD
+app-0             app-0-camel-pipelines.apps.ocp43.local                    app-0             80                   None
+nginx             nginx-camel-pipelines.apps.ocp43.local                    nginx             web                  None
+----
+
+
+----
 Let's created a DaemonSet with DNS tools.
 We'll connect to one of pods and run a DNS query for the headless service
 ----

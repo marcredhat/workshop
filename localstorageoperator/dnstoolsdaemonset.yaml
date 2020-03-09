@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: dnstools
+spec:
+  template:
+    metadata:
+      labels:
+        marc: dnstools
+    spec:
+      nodeSelector:
+        marc: dnstools-node
+      containers:
+        - name: dnstools
+          image: tutum/dnstools
+          command:
+          - bin/sleep
+          - infinity
+#oc label node worker-1.ocp43.local marc=dnstools-node
+#oc label node worker-2.ocp43.local marc=dnstools-node          

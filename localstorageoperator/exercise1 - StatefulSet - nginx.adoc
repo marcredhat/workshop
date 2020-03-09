@@ -83,12 +83,24 @@ Exposing StatefulSets
 See https://itnext.io/exposing-statefulsets-in-kubernetes-698730fb92a1
 ----
 
+== Create additional Services that point to the individual Pods of the StatefulSet.
+
 ----
 Each pod in the StatefulSet has a label:
 
 oc get pods --show-labels | grep nginx
 web-0                                            1/1     Running             0          67m    app=nginx,controller-revision-hash=web-b46f789c4,statefulset.kubernetes.io/pod-name=web-0
-web-1                                            1/1     Running             0          67m    app=nginx,controller-revision-hash=web-b46f789c4,statefulset.kubernetes.io/pod-name=web-
+web-1                                            1/1     Running             0          67m    app=nginx,controller-revision-hash=web-b46f789c4,statefulset.kubernetes.io/pod-name=web-1
+----
+
+----
+We can use the pod's label (e.g. pod-name=web-1) in a Service Selector.
+
+We can also direct traffic directly to the node running the specific instance of our StatefulSet. 
+by setting the Service attribute externalTrafficPolicy to Local. 
+
+This forces the Service to only proxy traffic for local endpoints. 
+Any node in the cluster that is not running the specific instance of the Pod will not proxy traffic, and will therefore fail any external healthcheck.
 ----
 
 

@@ -5,3 +5,11 @@ We are going to create an Nginx Stateful Set using the storage class created by 
 
 oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/nginx_stateful_set_using_the_storage_class_created_by_local_storage_operator.yaml
 ----
+
+----
+for i in 0 1; do kubectl exec web-$i -- sh -c 'echo $(hostname) > /usr/share/nginx/html/index.html'; done
+
+for i in 0 1; do kubectl exec -it web-$i -- curl localhost; done
+web-0
+web-1
+----

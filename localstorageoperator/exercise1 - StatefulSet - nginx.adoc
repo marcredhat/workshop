@@ -91,3 +91,17 @@ web-0                                            1/1     Running             0  
 web-1                                            1/1     Running             0          67m    app=nginx,controller-revision-hash=web-b46f789c4,statefulset.kubernetes.io/pod-name=web-
 ----
 
+
+----
+oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/service_route_directly_to_node.yaml
+service/app-0 created
+----
+
+
+----
+oc expose svc/app-0
+route.route.openshift.io/app-0 exposed
+oc get route
+NAME              HOST/PORT                                          PATH   SERVICES          PORT   TERMINATION   WILDCARD
+app-0             app-0-camel-pipelines.apps.ocp43.local                    app-0             80                   None
+----

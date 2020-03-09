@@ -117,3 +117,7 @@ oc get route
 NAME              HOST/PORT                                          PATH   SERVICES          PORT   TERMINATION   WILDCARD
 app-0             app-0-camel-pipelines.apps.ocp43.local                    app-0             80                   None
 ----
+
+
+
+image:../images/servicetopod.png[title="Service to individual pod in StatefulSet"]

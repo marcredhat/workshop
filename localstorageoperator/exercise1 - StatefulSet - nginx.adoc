@@ -26,6 +26,13 @@ web-0
 web-1
 ----
 
+----
+Even though web-0 and web-1 were rescheduled, they continue to serve their hostnames 
+because the PersistentVolumes associated with their PersistentVolumeClaims are remounted to their volumeMounts. 
+No matter what node web-0and web-1 are scheduled on, 
+their PersistentVolumes will be mounted to the appropriate mount points.
+----
+
 
 ----
 Default Kubernetes service type is ClusterIP.

@@ -6,7 +6,7 @@ Prerequisities: persistent storage
 ----
 
 ----
-wget https://raw.githubusercontent.com/marcredhat/workshop/master/tekton/workspaces_persistent_storage.yaml
+wget https://github.com/marcredhat/workshop/blob/master/tekton/workspaces_persistent_storage/taskrun_worskspaces_persistent_storage.yaml
 ----
 
 ----
@@ -14,11 +14,17 @@ vi workspaces_persistent_storage.yaml
 %s/local-pvc-name/tekton-pvc-name/g
 ----
 
+
+----
+oc delete -f https://github.com/marcredhat/workshop/blob/master/tekton/workspaces_persistent_storage/taskrun_worskspaces_persistent_storage.yaml
+oc create -f https://github.com/marcredhat/workshop/blob/master/tekton/workspaces_persistent_storage/taskrun_worskspaces_persistent_storage.yaml
+----
+
+
 ----
 oc get pvc
 NAME              STATUS        VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 local-pvc-name    Terminating   local-pv-c8bb60de   100Gi      RWO            marcsc         131m
-maven-repo-pvc    Bound         local-pv-2c3a30c0   10Gi       RWO            marcsc         97m
 tekton-pvc-name   Pending                                                                    6m48s
 ----
 

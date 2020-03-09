@@ -131,3 +131,36 @@ app-0             app-0-camel-pipelines.apps.ocp43.local                    app-
 
 
 image:../images/servicetopod.png[title="Service to individual pod in StatefulSet"]
+
+
+----
+for i in {1..5} ; do curl http://app-0-camel-pipelines.apps.ocp43.local/;done
+web-1
+web-1
+web-1
+web-1
+web-1
+----
+
+----
+Change the selector used to direct all traffic to the web-1 pod 
+
+oc edit svc app-0
+
+Change as follows
+selector:
+    statefulset.kubernetes.io/pod-name: web-0
+----
+
+
+----
+for i in {1..5} ; do curl http://app-0-camel-pipelines.apps.ocp43.local/;done
+web-0
+web-0
+web-0
+web-0
+web-0
+----
+
+
+

@@ -1,2 +1,7 @@
-https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/
 
+----
+See https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/
+We are going to create an Nginx Stateful Set using the storage class created by the Local Storage Operator (marcsc).
+
+oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/nginx_stateful_set_using_the_storage_class_created_by_local_storage_operator.yaml
+----

@@ -1,0 +1,10 @@
+
+----
+See https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/
+
+Issues:
+"read-only filesystem" errors in the mysql pod
+
+Solved as follows:
+kubectl exec wordpress-mysql-7697fd495-48r9z -- chmod -R 755 /var
+----

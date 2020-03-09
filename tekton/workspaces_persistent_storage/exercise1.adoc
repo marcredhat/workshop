@@ -63,3 +63,17 @@ tekton-pvc-name   Bound         local-pv-1a712043   100Gi      RWO            ma
 
 
 image:../../images/1workspacespersistentstorage.png[title="Workspaces persistent storage 1"]
+
+
+
+== Issues with PVC stuck at "Terminating"
+
+----
+Solved as follows:
+kubectl patch pvc local-pvc-name -p '{"metadata":{"finalizers":null}}'
+kubectl patch pv local-pv-c8bb60de -p '{"metadata":{"finalizers":null}}'
+
+By default, the finalizer value is set to 'protect' which will block the deletion. 
+More about finalizers here :
+https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#finalizers
+----

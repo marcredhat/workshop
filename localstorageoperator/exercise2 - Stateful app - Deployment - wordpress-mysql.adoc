@@ -13,7 +13,7 @@ oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/locals
 ----
 #Create Wordpress Deployment for the Wordpress - MySQL stateful app
 #Note that we are using that file below uses the storage class created by the Local Storage Operator (marcsc)
-https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/wordpress-deployment-with-storage-class-created-by-LocalStorageOperator.yaml
+oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/wordpress-deployment-with-storage-class-created-by-LocalStorageOperator.yaml
 ----
 
 ----

@@ -16,6 +16,18 @@ web-1
 
 
 ----
+kubectl delete pod -l app=nginx
+----
+
+
+----
+for i in 0 1; do kubectl exec -it web-$i -- curl localhost; done
+web-0
+web-1
+----
+
+
+----
 kubectl run -i --tty --image busybox:1.28 dns-test --restart=Never --rm   nslookup web-0.nginx
 
 Server:    172.30.0.10

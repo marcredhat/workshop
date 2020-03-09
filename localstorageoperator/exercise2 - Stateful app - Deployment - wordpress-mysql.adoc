@@ -47,4 +47,4 @@ kubectl exec wordpress-mysql-7697fd495-48r9z -- chmod -R 755 /var
 ----
 
 
-image:../../images/1wordpress.png[title="Wordpress MySQL stateful app"]
+image:../images/1wordpress.png[title="Wordpress MySQL stateful app"]

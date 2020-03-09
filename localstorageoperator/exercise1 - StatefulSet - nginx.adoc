@@ -52,10 +52,19 @@ oc expose svc/nginx
 
 oc get route
 NAME              HOST/PORT                                          PATH   SERVICES          PORT   TERMINATION   WILDCARD
-app-0             app-0-camel-pipelines.apps.ocp43.local                    app-0             80                   None
 nginx             nginx-camel-pipelines.apps.ocp43.local                    nginx             web                  None
 ----
 
+
+----
+for i in {1..6} ; do curl http://nginx-camel-pipelines.apps.ocp43.local/;done
+web-0
+web-1
+web-0
+web-1
+web-0
+web-1
+----
 
 ----
 Let's created a DaemonSet with DNS tools.

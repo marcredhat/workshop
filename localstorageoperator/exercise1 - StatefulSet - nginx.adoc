@@ -77,3 +77,17 @@ Address 1: 10.128.3.35 web-0.nginx.camel-pipelines.svc.cluster.local
 pod "dns-test" deleted
 ----
 
+
+----
+Exposing StatefulSets
+See https://itnext.io/exposing-statefulsets-in-kubernetes-698730fb92a1
+----
+
+----
+Each pod in the StatefulSet has a label:
+
+oc get pods --show-labels | grep nginx
+web-0                                            1/1     Running             0          67m    app=nginx,controller-revision-hash=web-b46f789c4,statefulset.kubernetes.io/pod-name=web-0
+web-1                                            1/1     Running             0          67m    app=nginx,controller-revision-hash=web-b46f789c4,statefulset.kubernetes.io/pod-name=web-
+----
+

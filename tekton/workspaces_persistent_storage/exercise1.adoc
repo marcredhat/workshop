@@ -11,7 +11,7 @@ wget https://github.com/marcredhat/workshop/blob/master/tekton/workspaces_persis
 
 ----
 vi workspaces_persistent_storage.yaml
-%s/local-pvc-name/tekton-pvc-name/g
+:%s/local-pvc-name/tekton-pvc-name/g
 ----
 
 

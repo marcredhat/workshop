@@ -8,11 +8,17 @@ See https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-pe
 # Create Deployment for the Wordpress - MySQL stateful app
 # Note that we are using that file below uses the storage class created by the Local Storage Operator (marcsc)
 oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/wordpress-mysql-deployment-with-storage-class-created-by-local-storage-operator.yaml
+----
 
+
+----
 # Create PVC for the Wordpress - MySQL stateful app
 # Note that we are using that file below uses the storage class created by the Local Storage Operator (marcsc)
 oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/pvc_with_storage_class_created_by_local_storage_operator.yaml
+----
 
+
+----
 # Create secret for the Wordpress - MySQL stateful app
 oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/secret_wordpress_mysql.yaml
 ----

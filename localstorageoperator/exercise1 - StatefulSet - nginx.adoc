@@ -28,6 +28,38 @@ web-1
 
 
 ----
+Default Kubernetes service type is ClusterIP.
+
+oc get svc | grep nginx
+nginx                    ClusterIP      None             <none>        80/TCP                                          156m
+
+With ClusterIP None, no load-balancing is done and no cluster IP is allocated for this service. 
+Only DNS is automatically configured. 
+When you run a DNS query for headless service, you will get the list of the Pods IPs.
+Usually, the client DNS chooses the first DNS record.
+----
+
+
+----
+Let's created a DaemonSet with DNS tools.
+We'll connect to one of pods and run a DNS query for the headless service
+----
+
+----          
+oc create -f https://raw.githubusercontent.com/marcredhat/workshop/master/localstorageoperator/dnstoolsdaemonset.yaml
+oc label node worker-1.ocp43.local dnstools=dnstools-node
+oc label node worker-2.ocp43.local dnstools=dnstools-node
+
+oc rsh dnstools-rsdxs
+#
+# host nginx
+nginx.camel-pipelines.svc.cluster.local has address 10.128.3.65
+nginx.camel-pipelines.svc.cluster.local has address 10.129.1.104
+----
+
+
+
+----
 kubectl run -i --tty --image busybox:1.28 dns-test --restart=Never --rm   nslookup web-0.nginx
 
 Server:    172.30.0.10

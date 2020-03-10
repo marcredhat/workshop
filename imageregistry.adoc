@@ -1,0 +1,23 @@
+
+----
+oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"managementState": "Managed"}}'
+----
+
+----
+oc get pods -n openshift-image-registry
+NAME                                              READY   STATUS              RESTARTS   AGE
+cluster-image-registry-operator-79bfcb686-zphm5   2/2     Running             0          13d
+image-registry-7b558f967c-5c5h4                   0/1     Pending             0          0s
+image-registry-7bf9659d87-mvfbn                   0/1     ContainerCreating   0          0s
+image-registry-8cf448d96-k4q56                    0/1     Terminating         0          1s
+node-ca-26jq4                                     0/1     ContainerCreating   0          1s
+node-ca-472ct                                     0/1     ContainerCreating   0          1s
+node-ca-mcd44                                     0/1     ContainerCreating   0          1s
+node-ca-qpgfb                                     0/1     ContainerCreating   0          1s
+node-ca-xtdll                                     0/1     ContainerCreating   0          1s
+----
+
+
+----
+see https://labs.consol.de/container/platform/openshift/2020/01/31/ocp43-installation-vmware.html#setup-image-registry-postinstall
+----

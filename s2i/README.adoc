@@ -147,6 +147,19 @@ Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-pipel
 Push successful
 ----
 
+
+----
+oc get is
+NAME               IMAGE REPOSITORY                                                                    TAGS     UPDATED
+gradle-container   image-registry.openshift-image-registry.svc:5000/camel-pipelines/gradle-container   latest   7 minutes ago
+gs-gradle          image-registry.openshift-image-registry.svc:5000/camel-pipelines/gs-gradle          latest   5 minutes ago
+ubi-minimal        image-registry.openshift-image-registry.svc:5000/camel-pipelines/ubi-minimal        latest   10 minutes ago
+(base) [root@dell-r730-001 ~]# oc get dc
+NAME        REVISION   DESIRED   CURRENT   TRIGGERED BY
+gs-gradle   1          1         1         config,image(gs-gradle:latest)
+----
+
+
 ----
 Cleanup
 oc delete imagestreamtag.image.openshift.io "gs-gradle:latest"

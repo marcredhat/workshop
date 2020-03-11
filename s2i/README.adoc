@@ -1,3 +1,9 @@
+
+----
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:camel-pipelines:builder
+----
+
+
 ----
 oc import-image centos:8 --confirm
 imagestream.image.openshift.io/centos imported

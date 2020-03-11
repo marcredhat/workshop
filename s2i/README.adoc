@@ -51,11 +51,11 @@ Push successful
 
 
 ----
-In the command below, "initial" is the folder where the build.gradle file is found at https://github.com/spring-guides/gs-gradle.git
+In the command below, "complete" is the folder where the build.gradle file is found at https://github.com/spring-guides/gs-gradle.git
 ----
 
 ----
-oc new-app --loglevel=6 gradle-container~https://github.com/spring-guides/gs-gradle.git --context-dir=initial
+oc new-app --loglevel=6 gradle-container~https://github.com/spring-guides/gs-gradle.git --context-dir=complete
 --> Found image d0af529 (3 minutes old) in image stream "camel-pipelines/gradle-container" under tag "latest" for "gradle-container"
 
     Handy Environment

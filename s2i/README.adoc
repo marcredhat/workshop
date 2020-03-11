@@ -1,6 +1,6 @@
 
 
-== Gradle S2I builder based on UBI-8
+== Gradle S2I builder based on UBI-8 minimal
 We'll show how to build a Spring app
 
 

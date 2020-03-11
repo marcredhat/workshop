@@ -77,3 +77,13 @@ oc new-app gradle-container~https://github.com/spring-guides/gs-gradle.git
      'oc expose svc/gs-gradle'
     Run 'oc status' to view your app.
 ----
+
+
+----
+Cleanup
+oc delete imagestreamtag.image.openshift.io "gs-gradle:latest"
+oc delete buildconfigs.build.openshift.io "gs-gradle
+oc delete deploymentconfigs.apps.openshift.io "gs-gradle"
+oc delete svc gs-gradle
+----
+

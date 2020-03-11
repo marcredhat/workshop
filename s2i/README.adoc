@@ -14,5 +14,5 @@ imagestream.image.openshift.io/centos imported
 ----
 
 ----
-oc new-build https://github.com/hakdogan/handy-environment.git --name gradle-container
+oc new-build https://github.com/marcredhat/handy-environment --name gradle-container
 ----

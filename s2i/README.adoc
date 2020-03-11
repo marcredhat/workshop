@@ -1,4 +1,10 @@
 
+
+== Gradle S2I builder based on UBI-8
+We'll show how to build a Spring app
+
+
+
 ----
 As our S2I builder uses UBI-8,
 we need to get a registry token from https://access.redhat.com/terms-based-registry/

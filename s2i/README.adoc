@@ -50,7 +50,7 @@ Push successful
 
 
 ----
-oc new-app gradle-container~https://github.com/spring-guides/gs-gradle.git
+oc new-app gradle-container~https://github.com/spring-guides/gs-gradle.git --context-dir=initial
 --> Found image d0af529 (3 minutes old) in image stream "camel-pipelines/gradle-container" under tag "latest" for "gradle-container"
 
     Handy Environment

@@ -141,6 +141,10 @@ BUILD SUCCESSFUL in 2s
 STEP 8: CMD /home/s2i/bin/run
 STEP 9: COMMIT temp.builder.openshift.io/camel-pipelines/gs-gradle-1:68613f32
 ....
+Writing manifest to image destination
+Storing signatures
+Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-pipelines/gs-gradle@sha256:6b583a62d797baf41cded52877204f573f437aaecee87bab63f62aa988fb56bc
+Push successful
 ----
 
 ----

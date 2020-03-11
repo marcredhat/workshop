@@ -151,3 +151,7 @@ oc delete deploymentconfigs.apps.openshift.io "gs-gradle"
 oc delete svc gs-gradle
 ----
 
+
+----
+See https://www.redhat.com/sysadmin/building-buildah
+----

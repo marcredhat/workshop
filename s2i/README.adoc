@@ -85,6 +85,59 @@ oc new-app --loglevel=6 gradle-container~https://github.com/spring-guides/gs-gra
 
 
 ----
+....
+STEP 7: RUN /home/s2i/bin/assemble
+[BUILDER-INFO] Installing application source...
+[BUILDER-INFO] gradle build detected
+[BUILDER-INFO] gradle build
+
+Welcome to Gradle 6.2.2!
+
+Here are the highlights of this release:
+ - Dependency checksum and signature verification
+ - Shareable read-only dependency cache
+ - Documentation links in deprecation messages
+
+For more details see https://docs.gradle.org/6.2.2/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :compileJava
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :jar
+> Task :startScripts
+> Task :distTar
+> Task :distZip
+> Task :assemble
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+> Task :test
+> Task :check
+> Task :build
+
+
+
+BUILD SUCCESSFUL in 15s
+7 actionable tasks: 7 executed
+[BUILDER-INFO] gradle run
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+
+> Task :run
+The current local time is: 18:08:20.250
+Hello world!
+
+
+BUILD SUCCESSFUL in 2s
+2 actionable tasks: 1 executed, 1 up-to-date
+STEP 8: CMD /home/s2i/bin/run
+STEP 9: COMMIT temp.builder.openshift.io/camel-pipelines/gs-gradle-1:68613f32
+....
+----
+
+----
 Cleanup
 oc delete imagestreamtag.image.openshift.io "gs-gradle:latest"
 oc delete buildconfigs.build.openshift.io "gs-gradle"

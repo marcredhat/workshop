@@ -42,7 +42,7 @@ gradle-container-1   Docker   Git    Pending
 ----
 
 ----
-oc logs build/gradle-container-1
+oc logs build/gradle-container-1 --follow
 .....
 Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-pipelines/gradle-container@sha256:d53aa09f88a6fddce47341f92f68437b5206b61114453c6a7efc5fe16931a8f7
 Push successful

@@ -34,3 +34,11 @@ imagestream.image.openshift.io/centos imported
 ----
 oc new-build https://github.com/marcredhat/handy-environment --name gradle-container
 ----
+
+----
+oc get build
+NAME                 TYPE     FROM   STATUS    STARTED   DURATION
+gradle-container-1   Docker   Git    Pending
+
+oc logs build/gradle-container-1
+----

@@ -1,5 +1,23 @@
 
 ----
+Get registry token https://access.redhat.com/terms-based-registry/
+
+Example: my username is xxxx|marcsecret
+
+
+oc create secret docker-registry marcsecret \
+    --docker-server=registry.redhat.io \
+    --docker-username="xxxx|marcsecret" \
+    --docker-password="" \
+    --docker-email=mchisine@redhat.com
+
+oc secrets link default marcsecret --for=pull
+ 
+oc secrets link builder marcsecret
+----
+
+
+----
 oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:camel-pipelines:builder
 ----
 

@@ -23,5 +23,6 @@ node-ca-xtdll                                     0/1     ContainerCreating   0 
 see https://labs.consol.de/container/platform/openshift/2020/01/31/ocp43-installation-vmware.html#setup-image-registry-postinstall
 ----
 
-oc exec image-registry-7bf9659d87-j4knn  -- chmod -R 755 /etc/pki/ca-trust/
-oc exec image-registry-7bf9659d87-j4knn -n openshift-image-registry
+----
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-image-registry:registry
+----

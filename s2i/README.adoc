@@ -1,6 +1,7 @@
 
 ----
-Get registry token https://access.redhat.com/terms-based-registry/
+As our S2I builder uses UBI-8,
+we need to get a registry token from https://access.redhat.com/terms-based-registry/
 
 Example: my username is xxxx|marcsecret
 

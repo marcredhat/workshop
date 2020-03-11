@@ -26,3 +26,8 @@ see https://labs.consol.de/container/platform/openshift/2020/01/31/ocp43-install
 ----
 oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-image-registry:registry
 ----
+
+
+----
+oc edit configs.imageregistry.operator.openshift.io
+----

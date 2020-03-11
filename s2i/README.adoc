@@ -3,6 +3,10 @@
 oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:camel-pipelines:builder
 ----
 
+----
+oc edit scc restricted
+readOnlyRootFilesystem: false
+----
 
 ----
 oc import-image centos:8 --confirm

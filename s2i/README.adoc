@@ -13,15 +13,6 @@ oc import-image centos:8 --confirm
 imagestream.image.openshift.io/centos imported
 ----
 
-
 ----
-oc get build
-NAME                 TYPE     FROM   STATUS                        STARTED         DURATION
-gradle-container-1   Docker   Git    Failed (GenericBuildFailed)   3 minutes ago   9s
-----
-
-
-----
-oc logs build/gradle-container-1
-Error setting up cluster CA cert: open /etc/pki/tls/certs/cluster.crt: read-only file system(base)
+oc new-build https://github.com/hakdogan/handy-environment.git --name gradle-container
 ----

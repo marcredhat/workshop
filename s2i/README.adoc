@@ -1,0 +1,2 @@
+oc import-image centos:8 --confirm
+imagestream.image.openshift.io/centos imported

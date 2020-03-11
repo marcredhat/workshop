@@ -47,3 +47,33 @@ oc logs build/gradle-container-1
 Successfully pushed image-registry.openshift-image-registry.svc:5000/camel-pipelines/gradle-container@sha256:d53aa09f88a6fddce47341f92f68437b5206b61114453c6a7efc5fe16931a8f7
 Push successful
 ----
+
+
+----
+oc new-app gradle-container~https://github.com/spring-guides/gs-gradle.git
+--> Found image d0af529 (3 minutes old) in image stream "camel-pipelines/gradle-container" under tag "latest" for "gradle-container"
+
+    Handy Environment
+    -----------------
+    S2I builder for Java Applications.
+
+    Tags: builder, java, maven, gradle
+
+    * A source build using source code from https://github.com/spring-guides/gs-gradle.git will be created
+      * The resulting image will be pushed to image stream tag "gs-gradle:latest"
+      * Use 'oc start-build' to trigger a new build
+    * This image will be deployed in deployment config "gs-gradle"
+    * Port 8080/tcp will be load balanced by service "gs-gradle"
+      * Other containers can access this service through the hostname "gs-gradle"
+
+--> Creating resources ...
+    imagestream.image.openshift.io "gs-gradle" created
+    buildconfig.build.openshift.io "gs-gradle" created
+    deploymentconfig.apps.openshift.io "gs-gradle" created
+    service "gs-gradle" created
+--> Success
+    Build scheduled, use 'oc logs -f bc/gs-gradle' to track its progress.
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose svc/gs-gradle'
+    Run 'oc status' to view your app.
+----

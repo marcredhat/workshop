@@ -191,6 +191,9 @@ spec:
     sourceStrategy:
       incremental: true
 oc start-build --from-build=<build_name> --follow
+
+oc start-build --from-build=gs-gradle-1  --follow
+build.build.openshift.io/gs-gradle-2 started
 ----
 
 ----

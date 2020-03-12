@@ -49,10 +49,6 @@ oc edit scc restricted
 readOnlyRootFilesystem: false
 ----
 
-----
-oc import-image centos:8 --confirm
-imagestream.image.openshift.io/centos imported
-----
 
 ----
 oc new-build https://github.com/marcredhat/handy-environment --name gradle-container

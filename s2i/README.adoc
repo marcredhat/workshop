@@ -182,7 +182,7 @@ Based on https://github.com/OpenLiberty/guide-gradle-intro
 
 
 ----
-oc new-app --loglevel=6 gradle-container~https://github.com/OpenLiberty/guide-gradle-intro.git --context-dir=finish
+oc new-app --loglevel=6 gradle-container~https://github.com/marcredhat/guide-gradle-intro~https://github.com/OpenLiberty/guide-gradle-intro.git --context-dir=finish
 ----
 
 
@@ -218,4 +218,13 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :openTestReport
 
 ....
+----
+
+
+----
+Cleanup
+oc delete imagestreamtag.image.openshift.io "guide-gradle-intro:latest"
+oc delete buildconfigs.build.openshift.io "guide-gradle-intro"
+oc delete deploymentconfigs.apps.openshift.io "guide-gradle-intro"
+oc delete svc guide-gradle-intro
 ----

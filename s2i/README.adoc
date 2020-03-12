@@ -182,7 +182,7 @@ Based on https://github.com/OpenLiberty/guide-gradle-intro
 
 
 ----
-oc new-app --loglevel=6 gradle-container~https://github.com/marcredhat/guide-gradle-intro~https://github.com/OpenLiberty/guide-gradle-intro.git --context-dir=finish
+oc new-app --loglevel=6 gradle-container~https://github.com/OpenLiberty/guide-gradle-intro.git --context-dir=finish
 ----
 
 

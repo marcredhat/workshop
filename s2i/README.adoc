@@ -172,3 +172,17 @@ oc delete svc gs-gradle
 ----
 See https://www.redhat.com/sysadmin/building-buildah
 ----
+
+
+== Gradle / OpenLiberty
+
+----
+Based on https://github.com/OpenLiberty/guide-gradle-intro
+----
+
+
+----
+oc new-app --loglevel=6 gradle-container~https://github.com/OpenLiberty/guide-gradle-intro.git --context-dir=finish
+----
+
+

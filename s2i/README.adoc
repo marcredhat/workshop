@@ -149,6 +149,27 @@ Push successful
 
 
 ----
+drwxr-xr-x.  1 root root   17 Mar  2 17:42 ..
+drwxrwxrwx.  1 1001 root   76 Mar 12 06:58 bin
+-rw-r--r--.  1 1001 root  508 Mar 12 07:02 build.gradle
+-rw-r--r--.  1 1001 root 2260 Mar 12 07:02 gradlew.bat
+-rwxr-xr-x.  1 1001 root 5296 Mar 12 07:02 gradlew
+drwxr-xr-x.  3 1001 root   21 Mar 12 07:02 gradle
+drwxr-xr-x.  4 1001 root   30 Mar 12 07:02 src
+drwxr-xr-x.  3 1001 root   21 Mar 12 07:02 ?
+drwxr-xr-x.  6 1001 root   75 Mar 12 07:02 .gradle
+drwxrwxrwx.  1 1001 root  122 Mar 12 07:02 .
+drwxr-xr-x. 10 1001 root  132 Mar 12 07:02 build
+./gradle/wrapper/gradle-wrapper.jar
+./?/.gradle/caches/6.2.2/workerMain/gradle-worker.jar
+./?/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.2/a5f29a7acaddea3f4af307e8cf2d0cc82645fd7d/joda-time-2.2.jar
+./?/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar
+./?/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar
+./build/libs/gs-gradle-0.1.0.jar
+----
+
+
+----
 oc get is
 NAME               IMAGE REPOSITORY                                                                    TAGS     UPDATED
 gradle-container   image-registry.openshift-image-registry.svc:5000/camel-pipelines/gradle-container   latest   7 minutes ago

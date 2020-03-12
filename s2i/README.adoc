@@ -1,8 +1,17 @@
 
 
 == Gradle S2I builder based on UBI-8 minimal
-We'll show how to build a Spring app
 
+
+----
+Prerequisites:
+
+OpenShift 4.3.1; I'm testing one one baremetal server using UPI/KVM/libvirt: 
+see https://github.com/marcredhat/upi/blob/master/ocp43.adoc
+
+Integrated registry: 
+see https://github.com/marcredhat/workshop/blob/master/imageregistry.adoc
+----
 
 
 ----
@@ -22,6 +31,13 @@ oc secrets link default marcsecret --for=pull
  
 oc secrets link builder marcsecret
 ----
+
+
+
+----
+We'll show how to build a Spring and OpenLiberty app using Gradle
+----
+
 
 
 ----

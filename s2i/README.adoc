@@ -61,7 +61,7 @@ In the command below, "complete" is the folder where the build.gradle file is fo
 ----
 
 ----
-oc new-app --loglevel=6 gradle-container~https://github.com/spring-guides/gs-gradle.git --context-dir=complete
+oc new-app --loglevel=6 gradle-container~https://github.com/marcredhat/gs-gradle --context-dir=complete
 --> Found image d0af529 (3 minutes old) in image stream "camel-pipelines/gradle-container" under tag "latest" for "gradle-container"
 
     Handy Environment
@@ -70,7 +70,7 @@ oc new-app --loglevel=6 gradle-container~https://github.com/spring-guides/gs-gra
 
     Tags: builder, java, maven, gradle
 
-    * A source build using source code from https://github.com/spring-guides/gs-gradle.git will be created
+    * A source build using source code from https://github.com/marcredhat/gs-gradle will be created
       * The resulting image will be pushed to image stream tag "gs-gradle:latest"
       * Use 'oc start-build' to trigger a new build
     * This image will be deployed in deployment config "gs-gradle"

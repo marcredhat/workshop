@@ -182,7 +182,10 @@ gs-gradle   1          1         1         config,image(gs-gradle:latest)
 
 
 ----
-enable incremental build in BuildConfig:
+enable incremental build in BuildConfig
+
+oc edit bc gs-gradle
+
 spec:
   strategy:
     sourceStrategy:

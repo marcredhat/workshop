@@ -163,7 +163,7 @@ gs-gradle   1          1         1         config,image(gs-gradle:latest)
 ----
 Cleanup
 oc delete imagestreamtag.image.openshift.io "gs-gradle:latest"
-#oc delete buildconfigs.build.openshift.io "gs-gradle"
+oc delete buildconfigs.build.openshift.io "gs-gradle"
 oc delete deploymentconfigs.apps.openshift.io "gs-gradle"
 oc delete svc gs-gradle
 ----
@@ -242,7 +242,7 @@ Getting image source signatures
 ----
 Cleanup
 oc delete imagestreamtag.image.openshift.io "guide-gradle-intro:latest"
-#oc delete buildconfigs.build.openshift.io "guide-gradle-intro"
+oc delete buildconfigs.build.openshift.io "guide-gradle-intro"
 oc delete deploymentconfigs.apps.openshift.io "guide-gradle-intro"
 oc delete svc guide-gradle-intro
 ----

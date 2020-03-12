@@ -215,7 +215,17 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :processTestResources NO-SOURCE
 > Task :testClasses
 > Task :integrationTest
-> Task :openTestReport
+> Task :openTestReport UP-TO-DATE
+> Task :libertyStop
+> Task :test NO-SOURCE
+> Task :check
+> Task :build
+
+BUILD SUCCESSFUL in 1m 24s
+9 actionable tasks: 9 executed
+STEP 9: CMD /var/tmp/bin/run
+STEP 10: COMMIT temp.builder.openshift.io/camel-pipelines/guide-gradle-intro-1:dc36bc29
+Getting image source signatures
 
 ....
 ----

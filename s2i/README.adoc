@@ -186,3 +186,36 @@ oc new-app --loglevel=6 gradle-container~https://github.com/OpenLiberty/guide-gr
 ----
 
 
+----
+....
+[UILDER-INFO] Installing application source...
+[BUILDER-INFO] gradle build detected
+[BUILDER-INFO] gradle build
+
+Welcome to Gradle 6.2.2!
+
+Here are the highlights of this release:
+ - Dependency checksum and signature verification
+ - Shareable read-only dependency cache
+ - Documentation links in deprecation messages
+
+For more details see https://docs.gradle.org/6.2.2/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :compileJava
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :war
+> Task :assemble
+> Task :installLiberty
+> Task :libertyCreate
+> Task :installApps
+> Task :libertyStart
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+> Task :integrationTest
+> Task :openTestReport
+
+....
+----

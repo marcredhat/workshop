@@ -182,6 +182,15 @@ gs-gradle   1          1         1         config,image(gs-gradle:latest)
 
 
 ----
+enable incremental build in BuildConfig:
+spec:
+  strategy:
+    sourceStrategy:
+      incremental: true
+oc start-build --from-build=<build_name> --follow
+----
+
+----
 Cleanup
 oc delete imagestreamtag.image.openshift.io "gs-gradle:latest"
 oc delete buildconfigs.build.openshift.io "gs-gradle"

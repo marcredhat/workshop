@@ -1,0 +1,4 @@
+----
+Based on https://medium.com/@lbroudoux/adding-security-layers-to-your-app-on-openshift-part-6-pki-as-a-service-with-vault-and-cert-e6dbbe7028c7
+----
+

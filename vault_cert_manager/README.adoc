@@ -2,3 +2,51 @@
 Based on https://medium.com/@lbroudoux/adding-security-layers-to-your-app-on-openshift-part-6-pki-as-a-service-with-vault-and-cert-e6dbbe7028c7
 ----
 
+----
+oc get pvc
+NAME                 STATUS   VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+vault-file-backend   Bound    local-pv-5fd5a308   10Gi       RWO            marcsc         7m25s
+----
+
+
+----
+export VAULT_ADDR=https://`oc get route -n fruits-catalog | grep -m1 vault | awk '{print $2}'`
+echo $VAULT_ADDR
+https://vault-fruits-catalog.apps.ocp43.local
+----
+
+
+----
+vault operator unseal -tls-skip-verify
+Unseal Key (will be hidden):
+Key             Value
+---             -----
+Seal Type       shamir
+Initialized     true
+Sealed          false
+Total Shares    1
+Threshold       1
+Version         1.3.3
+Cluster Name    vault-cluster-e9e38e23
+Cluster ID      8833b4b5-7189-1de2-5b05-9c7374bd6c14
+HA Enabled      false
+----
+
+
+----
+vault login -tls-skip-verify
+Token (will be hidden):
+Success! You are now authenticated. The token information displayed below
+is already stored in the token helper. You do NOT need to run "vault login"
+again. Future Vault requests will automatically use this token.
+
+Key                  Value
+---                  -----
+token                s.t4xABtzQ8JbV2PvhCp8n8L0B
+token_accessor       6erXngyDlIOeMbRvcFyRlU7f
+token_duration       ∞
+token_renewable      false
+token_policies       ["root"]
+identity_policies    []
+policies             ["root"]
+----

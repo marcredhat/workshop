@@ -52,3 +52,27 @@ jaeger-6b8c999576-kqn4p                   2/2     Running   12         13d
 kiali-86dc5bd4df-xjxk6                    1/1     Running   6          47h
 prometheus-c9949db84-v9qch                2/2     Running   36         11d
 ----
+
+
+----
+Create a new Slack app and webhook
+https://api.slack.com/apps?new_app=1
+----
+
+----
+helm upgrade -i flagger flagger/flagger \
+--namespace=marc-istio-system \
+--set crd.create=false \
+--set slack.url=https://hooks.slack.com/services/<webhook> \
+--set slack.channel=general \
+--set slack.user=flagger
+Release "flagger" has been upgraded. Happy Helming!
+NAME: flagger
+LAST DEPLOYED: Mon Mar 16 19:04:59 2020
+NAMESPACE: marc-istio-system
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+NOTES:
+Flagger installed
+----

@@ -76,3 +76,26 @@ TEST SUITE: None
 NOTES:
 Flagger installed
 ----
+
+
+----
+helm upgrade -i flagger-loadtester flagger/loadtester --namespace=test
+Release "flagger-loadtester" does not exist. Installing it now.
+NAME: flagger-loadtester
+LAST DEPLOYED: Mon Mar 16 19:51:38 2020
+NAMESPACE: test
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+Flagger's load testing service is available at http://flagger-loadtester.test/
+----
+
+
+----
+oc get pods -n test
+NAME                                 READY   STATUS    RESTARTS   AGE
+flagger-loadtester-c64654887-gspkt   1/1     Running   0          86s
+frontend-c87db6cf4-2vv5h             1/1     Running   0          6m33s
+frontend-c87db6cf4-x5h22             1/1     Running   0          6m18s
+----

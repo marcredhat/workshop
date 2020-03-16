@@ -79,6 +79,24 @@ Flagger installed
 
 
 ----
+kubectl apply -k github.com/weaveworks/flagger//kustomize/podinfo
+
+deployment.apps/podinfo created
+horizontalpodautoscaler.autoscaling/podinfo created
+----
+
+
+----
+oc get pods -n test
+NAME                                 READY   STATUS    RESTARTS   AGE
+flagger-loadtester-c64654887-gspkt   1/1     Running   0          5m17s
+frontend-c87db6cf4-2vv5h             1/1     Running   0          10m
+frontend-c87db6cf4-x5h22             1/1     Running   0          10m
+podinfo-7c84d8c94d-brjjc             0/1     Running   0          24s
+podinfo-7c84d8c94d-wq85x             1/1     Running   0          39s
+----
+
+----
 helm upgrade -i flagger-loadtester flagger/loadtester --namespace=test
 Release "flagger-loadtester" does not exist. Installing it now.
 NAME: flagger-loadtester

@@ -32,3 +32,23 @@ TEST SUITE: None
 NOTES:
 Flagger installed
 ----
+
+----
+oc project marc-istio-system
+Now using project "marc-istio-system" on server "https://api.ocp43.local:6443".
+oc get pods
+NAME                                      READY   STATUS    RESTARTS   AGE
+flagger-7bc766cf66-78bfn                  1/1     Running   0          2m46s
+grafana-5ff85c9d5c-khz88                  2/2     Running   23         11d
+istio-citadel-77b78454b-qdq6w             1/1     Running   35         11d
+istio-egressgateway-559bc7f686-dnbbh      1/1     Running   16         11d
+istio-galley-d8464ff4f-g5hdh              1/1     Running   1          11d
+istio-ingressgateway-bb8d96f94-5jnrx      1/1     Running   15         11d
+istio-pilot-7d65cf4647-gdqnk              2/2     Running   20         11d
+istio-policy-85b6d8b56b-fqgxx             2/2     Running   590        11d
+istio-sidecar-injector-84db6b48cc-kg7w7   1/1     Running   0          11d
+istio-telemetry-7b959db5fd-l6zfg          2/2     Running   587        11d
+jaeger-6b8c999576-kqn4p                   2/2     Running   12         13d
+kiali-86dc5bd4df-xjxk6                    1/1     Running   6          47h
+prometheus-c9949db84-v9qch                2/2     Running   36         11d
+----

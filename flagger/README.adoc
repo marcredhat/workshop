@@ -1,5 +1,12 @@
 
 ----
+Prerequisites: OpenShift 4.3.1+
+
+This is how I built my OpenShift 4.3 lab on one baremetal server using KVM/Libvirt:
+https://github.com/marcredhat/upi/blob/master/ocp43.adoc
+----
+
+----
 To install helm on RHEL 8, see https://github.com/marcredhat/workshop/blob/master/helm/README.adoc
 ----
 

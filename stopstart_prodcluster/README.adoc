@@ -10,7 +10,7 @@ Cordon all of your worker nodes to prevent new pods from starting or moving oc a
 
 
 Drain all of your worker nodes using something like: 
-oc adm drain <node> --ignore-daemonsets --force --grace-period=30 --delete-local-data.
+oc adm drain worker-1.ocp43.local --ignore-daemonsets --force --grace-period=30 --delete-local-data.
 ----
 
 

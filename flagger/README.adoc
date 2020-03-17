@@ -123,3 +123,15 @@ flagger-loadtester-c64654887-gspkt   1/1     Running   0          86s
 frontend-c87db6cf4-2vv5h             1/1     Running   0          6m33s
 frontend-c87db6cf4-x5h22             1/1     Running   0          6m18s
 ----
+
+----
+kubectl -n test set image deployment/podinfo podinfod=stefanprodan/podinfo:3.1.3
+----
+
+----
+watch kubectl get canaries --all-namespace
+----
+
+----
+oc describe canaries
+----

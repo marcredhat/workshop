@@ -33,6 +33,12 @@ NOTES:
 Flagger installed
 ----
 
+
+----
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:marc-istio-system:flagger
+----
+
+
 ----
 oc project marc-istio-system
 Now using project "marc-istio-system" on server "https://api.ocp43.local:6443".

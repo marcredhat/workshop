@@ -1,5 +1,5 @@
 
-== Progressive delivery Kubernetes operator (Canary, A/B Testing and Blue/Green deployments) on OpenShift 4.1
+== Progressive delivery Kubernetes operator (Canary, A/B Testing and Blue/Green deployments) on OpenShift 4.3.1+
 
 ----
 See https://github.com/weaveworks/flagger

@@ -5,6 +5,11 @@
 See https://github.com/weaveworks/flagger
 ----
 
+
+----
+Video demo: https://youtu.be/RtMKv3_e9HA
+----
+
 ----
 Prerequisites: OpenShift 4.3.1+
 

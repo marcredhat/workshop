@@ -1,0 +1,27 @@
+
+
+----
+https://servicesblog.redhat.com/2019/05/29/how-to-stop-and-start-a-production-openshift-cluster/
+----
+
+
+----
+Cordon all of your worker nodes to prevent new pods from starting or moving oc adm cordon <node>. 
+
+
+Drain all of your worker nodes using something like: 
+oc adm drain <node> --ignore-daemonsets --force --grace-period=30 --delete-local-data.
+----
+
+
+----
+ssh core@worker-1.ocp43.local
+
+reboot
+----
+
+----
+oc edit node worker-1.ocp43.local
+set 
+schedulable=true
+----

@@ -2,3 +2,16 @@
 ----
 https://developers.redhat.com/blog/2020/01/17/net-core-on-red-hat-platforms/
 ----
+
+----
+oc new-project dotnetcore
+----
+
+----
+oc create -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams_rhel8.json
+----
+
+----
+imagestream.image.openshift.io/dotnet created
+imagestream.image.openshift.io/dotnet-runtime created
+----

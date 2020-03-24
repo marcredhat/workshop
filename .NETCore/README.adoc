@@ -49,3 +49,7 @@ NAME                HOST/PORT                                       PATH   SERVI
 s2i-dotnetcore-ex   s2i-dotnetcore-ex-dotnetcore.apps.ocp44.local          s2i-dotnetcore-ex   8080-tcp                 None
 ----
 
+
+image:images/dotnetcore1.png[title="dotnetcore1"]
+
+image:images/dotnetcore2.png[title="dotnetcore2"]

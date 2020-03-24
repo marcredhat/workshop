@@ -1,3 +1,24 @@
 ----
-https://github.com/marcredhat/s2i-dotnetcore-ex
+Fork https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore
+
+In my case, https://github.com/marcredhat/s2i-dotnetcore-ex
 ----
+
+
+----
+oc new-project dotnetcore2
+----
+
+----
+oc create -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams_rhel8.json
+----
+
+----
+imagestream.image.openshift.io/dotnet created
+imagestream.image.openshift.io/dotnet-runtime created
+----
+
+----
+oc new-app dotnet:3.1~https://github.com/marcredhat/s2i-dotnetcore-ex#dotnetcore-3.1 --context-dir=app
+----
+

@@ -22,3 +22,18 @@ imagestream.image.openshift.io/dotnet-runtime created
 oc new-app dotnet:3.1~https://github.com/marcredhat/s2i-dotnetcore-ex#dotnetcore-3.1 --context-dir=app
 ----
 
+----
+oc expose svc/s2i-dotnetcore-ex
+route.route.openshift.io/s2i-dotnetcore-ex exposed
+----
+
+
+----
+oc get route
+NAME                HOST/PORT                                        PATH   SERVICES            PORT       TERMINATION   WILDCARD
+s2i-dotnetcore-ex   s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local          s2i-dotnetcore-ex   8080-tcp                 None
+----
+
+
+
+

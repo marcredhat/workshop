@@ -104,12 +104,13 @@ cp blue.yaml green.yaml
 ----
 vim green.yaml
 
-change name 
+1. change name 
 
 name: green-s2i-dotnetcore-ex
 
 
-change  version
+2. change triggers/imageChangeParams/from/name to s2i-dotnetcore-ex:0.5 (the "green" version)
+
 triggers:
     - type: ConfigChange
     - imageChangeParams:

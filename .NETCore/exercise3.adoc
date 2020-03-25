@@ -14,3 +14,25 @@ route.route.openshift.io/production exposed
 ----
 
 
+oc edit bc
+oc start-build
+
+
+cp blue.yaml green.yaml
+change name and version
+oc create -f green.yaml
+
+
+oc get svc -o yaml > greensvc.yaml
+change servicename and deploymentconfig name
+delete clusterIP
+
+oc create -f greensvc.yaml
+
+
+
+
+
+
+
+

@@ -45,4 +45,9 @@ Successfully pushed image-registry.openshift-image-registry.svc:5000/dotnetcore2
 Push successful
 ----
 
-
+----
+oc get dc
+NAME                     REVISION   DESIRED   CURRENT   TRIGGERED BY
+marc-s2i-dotnetcore-ex   1          1         1         config,image(s2i-dotnetcore-ex:0.1)
+s2i-dotnetcore-ex        4          1         1         config,image(s2i-dotnetcore-ex:latest)
+----

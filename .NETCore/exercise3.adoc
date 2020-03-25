@@ -50,6 +50,22 @@ curl http://green-dotnetcore2.apps.ocp44.local/Home/Privacy | grep GREEN
 
 curl http://blue-dotnetcore2.apps.ocp44.local/Home/Privacy | grep BLUE
 <p>BLUE</p>
+
+
+curl http://production-dotnetcore2.apps.ocp44.local/Home/Privacy | grep BLUE
+<p>BLUE</p>
 ----
 
 
+----
+Once the green version is ready to go live, just flip the switch.
+----
+
+----
+oc patch route/production -p '{"spec":{"to":{"name":"green-s2i-dotnetcore-ex"}}}'
+----
+
+----
+curl http://production-dotnetcore2.apps.ocp44.local/Home/Privacy | grep GREEN
+<p>GREEN</p>
+----

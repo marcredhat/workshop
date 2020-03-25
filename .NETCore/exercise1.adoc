@@ -18,6 +18,21 @@ imagestream.image.openshift.io/dotnet created
 imagestream.image.openshift.io/dotnet-runtime created
 ----
 
+
+----
+Create a new branch
+----
+
+image:images/newbranch.png[title="newbranch"]
+
+
+----
+Change some code 
+----
+
+image:images/codeimage.png[title="codeimage"]
+
+
 ----
 oc new-app dotnet:3.1~https://github.com/marcredhat/s2i-dotnetcore-ex#marc-dotnetcore-3.1 --context-dir=app
 ----

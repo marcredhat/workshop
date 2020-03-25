@@ -81,9 +81,25 @@ oc start-build
 
 
 ----
-cp blue.yaml green.yaml
+s2i-dotnetcore-ex:0.5 has the "green" code
+s2i-dotnetcore-ex:0.4 has the "blue" code"
 ----
 
+
+----
+Let's create a deploymentconfig for the "green" version
+We'll ensure that this deployment config uses s2i-dotnetcore-ex:0.5 (see above)
+----
+
+
+----
+oc get dc -o yaml > blue.yaml
+----
+
+
+----
+cp blue.yaml green.yaml
+----
 
 ----
 vim green.yaml
@@ -110,6 +126,10 @@ triggers:
 oc create -f green.yaml
 ----
 
+
+----
+Let's create a service for the "green" version
+----
 
 ----
 oc get svc -o yaml > greensvc.yaml
@@ -151,8 +171,11 @@ curl http://green-dotnetcore2.apps.ocp44.local/Home/Privacy | grep GREEN
 
 curl http://blue-dotnetcore2.apps.ocp44.local/Home/Privacy | grep BLUE
 <p>BLUE</p>
+----
 
 
+----
+Production still uses the "blue" version
 curl http://production-dotnetcore2.apps.ocp44.local/Home/Privacy | grep BLUE
 <p>BLUE</p>
 ----
@@ -165,6 +188,11 @@ Once the green version is ready to go live, just flip the switch.
 ----
 oc patch route/production -p '{"spec":{"to":{"name":"green-s2i-dotnetcore-ex"}}}'
 ----
+
+----
+Check that production now uses the "green" version
+----
+
 
 ----
 curl http://production-dotnetcore2.apps.ocp44.local/Home/Privacy | grep GREEN

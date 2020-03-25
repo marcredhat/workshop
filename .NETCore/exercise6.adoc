@@ -26,7 +26,6 @@ STEP 7: WORKDIR /app/aspnetapp
 STEP 8: RUN dotnet publish -c Release -o out
 Microsoft (R) Build Engine version 16.4.0+e901037fe for .NET Core
 Copyright (C) Microsoft Corporation. All rights reserved.
-
   Restore completed in 31.75 ms for /app/aspnetapp/aspnetapp.csproj.
   aspnetapp -> /app/aspnetapp/bin/Release/netcoreapp3.1/aspnetapp.dll
   aspnetapp -> /app/aspnetapp/bin/Release/netcoreapp3.1/aspnetapp.Views.dll
@@ -42,4 +41,15 @@ STEP 12: ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 STEP 13: COMMIT dotnetmarc:0.1
 Getting image source signatures
 ......
+----
+
+
+----
+buildah images
+REPOSITORY                                                                        TAG            IMAGE ID       CREATED              SIZE
+localhost/dotnetmarc                                                              0.1            ea533471bd24   About a minute ago   474 MB
+----
+
+----
+buildah push localhost/dotnetmarc:0.1 quay.io/marcf5/dotnetcore
 ----

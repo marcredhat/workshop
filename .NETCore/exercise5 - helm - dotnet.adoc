@@ -12,3 +12,13 @@ version.BuildInfo{Version:"v3.1.2", GitCommit:"d878d4d45863e42fd5cff6743294a11d2
 ----
 https://dev.to/wolnikmarcin/run-asp-net-core-3-on-kubernetes-with-helm-1o01
 ----
+
+
+----
+git clone https://github.com/Crokus/aspnet-core-helm-sample.git
+cd aspnet-core-helm-sample/
+dotnet new webapi -o app --force
+cd app
+dotnet run watch
+----
+

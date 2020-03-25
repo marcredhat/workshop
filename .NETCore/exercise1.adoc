@@ -19,7 +19,7 @@ imagestream.image.openshift.io/dotnet-runtime created
 ----
 
 ----
-oc new-app dotnet:3.1~https://github.com/marcredhat/s2i-dotnetcore-ex#dotnetcore-3.1 --context-dir=app
+oc new-app dotnet:3.1~https://github.com/marcredhat/s2i-dotnetcore-ex#marc-dotnetcore-3.1 --context-dir=app
 ----
 
 ----
@@ -34,44 +34,3 @@ NAME                HOST/PORT                                        PATH   SERV
 s2i-dotnetcore-ex   s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local          s2i-dotnetcore-ex   8080-tcp                 None
 ----
 
-
-----
-oc logs marc-s2i-dotnetcore-ex-4-build
-
-Pushing image image-registry.openshift-image-registry.svc:5000/dotnetcore2/s2i-dotnetcore-ex:0.1 ...
-Getting image source signatures
-.....
-Successfully pushed image-registry.openshift-image-registry.svc:5000/dotnetcore2/s2i-dotnetcore-ex@sha256:ceffa90dad4cef1abf894ddda8336b5422361b75350b271aa2e48f6d8043dcb1
-Push successful
-----
-
-----
-oc get dc
-NAME                     REVISION   DESIRED   CURRENT   TRIGGERED BY
-marc-s2i-dotnetcore-ex   1          1         1         config,image(s2i-dotnetcore-ex:0.1)
-s2i-dotnetcore-ex        4          1         1         config,image(s2i-dotnetcore-ex:latest)
-----
-
-
-----
-oc create -f marcsvc.yaml
-service/marc-s2i-dotnetcore-ex created
-oc get svc
-NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
-marc-s2i-dotnetcore-ex   ClusterIP   172.30.245.188   <none>        8080/TCP   20s
-s2i-dotnetcore-ex        ClusterIP   172.30.239.89    <none>        8080/TCP   54m
-
-oc expose svc/marc-s2i-dotnetcore-ex
-route.route.openshift.io/marc-s2i-dotnetcore-ex exposed
-
-oc get route
-NAME                     HOST/PORT                                             PATH   SERVICES                 PORT       TERMINATION   WILDCARD
-marc-s2i-dotnetcore-ex   marc-s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local          marc-s2i-dotnetcore-ex   8080-tcp                 None
-s2i-dotnetcore-ex        s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local               s2i-dotnetcore-ex        8080-tcp                 None
-----
-
-
-
-
-
-oc rollout latest dc/marc-s2i-dotnetcore-ex

@@ -1,6 +1,12 @@
 
+== .NET Core on OpenShift 4.4 RC2
+
 ----
-https://developers.redhat.com/blog/2020/01/17/net-core-on-red-hat-platforms/
+Prerequisites: OpenShift 4.4 RC2 lab, see https://github.com/marcredhat/upi/blob/master/ocp44.adoc
+----
+
+----
+See https://developers.redhat.com/blog/2020/01/17/net-core-on-red-hat-platforms/
 ----
 
 ----

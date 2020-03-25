@@ -105,7 +105,19 @@ registry.access.redhat.com/ubi8/dotnet-31   latest       0359590b092d   7 weeks 
 
 
 ----
-podman tag localhost/aspnet3k8s:v1 image-registry.openshift-image-registry.svc:5000/aspnet3k8s:v1
+oc expose svc image-registry -n openshift-image-registry
+route.route.openshift.io/image-registry exposed
+[root@dell-r730-001 aspnet-core-helm-sample]# oc get route -n openshift-image-registry
+NAME             HOST/PORT                                                  PATH   SERVICES         PORT       TERMINATION   WILDCARD
+image-registry   image-registry-openshift-image-registry.apps.ocp44.local          image-registry   5000-tcp                 None
+----
+
+----
+podman tag localhost/aspnet3k8s:v1 image-registry-openshift-image-registry.apps.ocp44.local/aspnet3k8s:v1
+----
+
+----
+podman push image-registry-openshift-image-registry.apps.ocp44.local/aspnet3k8s:v1
 ----
 
 ----

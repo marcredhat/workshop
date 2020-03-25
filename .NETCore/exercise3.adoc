@@ -1,7 +1,12 @@
 
-----
-oc get dc -o yaml > blue.yaml
+== Blue-Green deployments
 
+
+----
+In the beginning, production uses the blue version
+----
+
+----
 oc get svc
 NAME                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 s2i-dotnetcore-ex   ClusterIP   172.30.129.206   <none>        8080/TCP   94m
@@ -9,7 +14,7 @@ s2i-dotnetcore-ex   ClusterIP   172.30.129.206   <none>        8080/TCP   94m
 oc expose svc/s2i-dotnetcore-ex --name=blue
 route.route.openshift.io/blue exposed
 
-[root@dell-r730-001 ~]# oc expose svc/s2i-dotnetcore-ex --name=production
+oc expose svc/s2i-dotnetcore-ex --name=production
 route.route.openshift.io/production exposed
 ----
 

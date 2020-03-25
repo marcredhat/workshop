@@ -14,25 +14,121 @@ route.route.openshift.io/production exposed
 ----
 
 
-oc edit bc
+----
+Change the code at 
+https://github.com/<...>/s2i-dotnetcore-ex/blob/marc-dotnetcore-3.1/app/Views/Home/Privacy.cshtml
+to display BLUE
+----
+
+
+----
+oc edit bc s2i-dotnetcore-ex
+----
+
+
+----
+.....
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: s2i-dotnetcore-ex:0.4
+.....
+----
+
+
+
+----
 oc start-build
+----
 
 
+----
+Change the code at 
+https://github.com/<...>/s2i-dotnetcore-ex/blob/marc-dotnetcore-3.1/app/Views/Home/Privacy.cshtml
+to display GREEN
+----
+
+
+----
+oc edit bc s2i-dotnetcore-ex
+----
+
+
+----
+.....
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: s2i-dotnetcore-ex:0.5
+.....
+----
+
+
+----
+oc start-build
+----
+
+
+----
 cp blue.yaml green.yaml
-change name and version
+----
+
+
+----
+vim green.yaml
+
+change name 
+
+name: green-s2i-dotnetcore-ex
+
+
+change  version
+triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - s2i-dotnetcore-ex
+        from:
+          kind: ImageStreamTag
+          name: s2i-dotnetcore-ex:0.5
+          namespace: dotnetcore2
+----
+
+----
 oc create -f green.yaml
+----
 
 
+----
 oc get svc -o yaml > greensvc.yaml
-change servicename and deploymentconfig name
-delete clusterIP
+
+vim greensvc.yaml
+
+1. change servicename as follows:
+name: green-s2i-dotnetcore-ex
+
+2. change deploymentconfig name as follows:
+deploymentconfig: green-s2i-dotnetcore-ex
+
+3. delete clusterIP
+----
 
 
+----
 oc create -f greensvc.yaml
+----
 
 
+----
 oc expose svc/green-s2i-dotnetcore-ex --name=green
-
+----
 
 ----
 oc get route

@@ -27,11 +27,19 @@ oc get svc -o yaml > greensvc.yaml
 change servicename and deploymentconfig name
 delete clusterIP
 
+
 oc create -f greensvc.yaml
 
 
+oc expose svc/green-s2i-dotnetcore-ex --name=green
 
 
+[root@dell-r730-001 ~]# oc get route
+NAME                HOST/PORT                                        PATH   SERVICES                  PORT       TERMINATION   WILDCARD
+blue                blue-dotnetcore2.apps.ocp44.local                       s2i-dotnetcore-ex         8080-tcp                 None
+green               green-dotnetcore2.apps.ocp44.local                      green-s2i-dotnetcore-ex   8080-tcp                 None
+production          production-dotnetcore2.apps.ocp44.local                 s2i-dotnetcore-ex         8080-tcp                 None
+s2i-dotnetcore-ex   s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local          s2i-dotnetcore-ex         8080-tcp                 None
 
 
 

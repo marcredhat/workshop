@@ -38,6 +38,66 @@ CURRENT   NAME                                                                  
           openshift-console/api-ocp44-local:6443/system:admin                   api-ocp44-local:6443   system:admin/api-ocp44-local:6443   openshift-console
 ----
 
+
+----
+[root@dell-r730-001 aspnet-core-helm-sample]# cat Dockerfile
+FROM registry.access.redhat.com/ubi8/dotnet-31 as build
+WORKDIR /app
+
+# copy csproj and restore
+COPY app/*.csproj ./aspnetapp/
+RUN cd ./aspnetapp/ && dotnet restore
+
+# copy all files and build
+COPY app/. ./aspnetapp/
+WORKDIR /app/aspnetapp
+RUN dotnet publish -c Release -o out
+
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine as runtime
+WORKDIR /app
+COPY --from=build /app/aspnetapp/out ./
+ENTRYPOINT [ "dotnet", "app.dll" ]
+----
+
+----
+[root@dell-r730-001 aspnet-core-helm-sample]# buildah bud .
+STEP 1: FROM registry.access.redhat.com/ubi8/dotnet-31 AS build
+Getting image source signatures
+.....
+Writing manifest to image destination
+Storing signatures
+STEP 2: WORKDIR /app
+STEP 3: COPY app/*.csproj ./aspnetapp/
+STEP 4: RUN cd ./aspnetapp/ && dotnet restore
+  Restore completed in 890.24 ms for /app/aspnetapp/app.csproj.
+STEP 5: COPY app/. ./aspnetapp/
+STEP 6: WORKDIR /app/aspnetapp
+STEP 7: RUN dotnet publish -c Release -o out
+Microsoft (R) Build Engine version 16.4.0+e901037fe for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Restore completed in 98.95 ms for /app/aspnetapp/app.csproj.
+  app -> /app/aspnetapp/bin/Release/netcoreapp3.1/app.dll
+  app -> /app/aspnetapp/out/
+STEP 8: FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine AS runtime
+Getting image source signatures
+....
+Writing manifest to image destination
+Storing signatures
+STEP 9: WORKDIR /app
+STEP 10: COPY --from=build /app/aspnetapp/out ./
+STEP 11: ENTRYPOINT [ "dotnet", "app.dll" ]
+STEP 12: COMMIT
+Getting image source signatures
+....
+Writing manifest to image destination
+Storing signatures
+....
+----
+
+
+
 ----
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 "stable" has been added to your repositories
@@ -50,6 +110,9 @@ Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "stable" chart repository
 Update Complete. ⎈ Happy Helming!⎈
 ----
+
+
+
 
 ----
 [root@dell-r730-001 aspnet-core-helm-sample]# helm install aspnet3release ./chart/

@@ -1,0 +1,30 @@
+
+
+----
+Make another code change
+----
+
+----
+oc edit bc s2i-dotnetcore-ex
+----
+
+----
+Change spec/output/name to s2i-dotnetcore-ex:0.2 as shown below
+----
+
+----
+.....
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: s2i-dotnetcore-ex:0.2
+ .....
+----
+
+
+----
+oc start-build s2i-dotnetcore-ex
+----

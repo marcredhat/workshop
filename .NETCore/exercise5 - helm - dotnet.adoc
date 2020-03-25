@@ -54,7 +54,7 @@ WORKDIR /app/aspnetapp
 RUN dotnet publish -c Release -o out
 
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine as runtime
+FROM registry.access.redhat.com/ubi8/dotnet-31-runtime AS runtime
 WORKDIR /app
 COPY --from=build /app/aspnetapp/out ./
 ENTRYPOINT [ "dotnet", "app.dll" ]
@@ -80,7 +80,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Restore completed in 98.95 ms for /app/aspnetapp/app.csproj.
   app -> /app/aspnetapp/bin/Release/netcoreapp3.1/app.dll
   app -> /app/aspnetapp/out/
-STEP 8: FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine AS runtime
+STEP 8: FROM registry.access.redhat.com/ubi8/dotnet-31-runtime AS runtime
 Getting image source signatures
 ....
 Writing manifest to image destination

@@ -35,5 +35,14 @@ s2i-dotnetcore-ex   s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local          s2i-
 ----
 
 
+----
+oc logs marc-s2i-dotnetcore-ex-4-build
+
+Pushing image image-registry.openshift-image-registry.svc:5000/dotnetcore2/s2i-dotnetcore-ex:0.1 ...
+Getting image source signatures
+.....
+Successfully pushed image-registry.openshift-image-registry.svc:5000/dotnetcore2/s2i-dotnetcore-ex@sha256:ceffa90dad4cef1abf894ddda8336b5422361b75350b271aa2e48f6d8043dcb1
+Push successful
+----
 
 

@@ -51,3 +51,21 @@ NAME                     REVISION   DESIRED   CURRENT   TRIGGERED BY
 marc-s2i-dotnetcore-ex   1          1         1         config,image(s2i-dotnetcore-ex:0.1)
 s2i-dotnetcore-ex        4          1         1         config,image(s2i-dotnetcore-ex:latest)
 ----
+
+
+----
+oc create -f marcsvc.yaml
+service/marc-s2i-dotnetcore-ex created
+oc get svc
+NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+marc-s2i-dotnetcore-ex   ClusterIP   172.30.245.188   <none>        8080/TCP   20s
+s2i-dotnetcore-ex        ClusterIP   172.30.239.89    <none>        8080/TCP   54m
+
+oc expose svc/marc-s2i-dotnetcore-ex
+route.route.openshift.io/marc-s2i-dotnetcore-ex exposed
+
+oc get route
+NAME                     HOST/PORT                                             PATH   SERVICES                 PORT       TERMINATION   WILDCARD
+marc-s2i-dotnetcore-ex   marc-s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local          marc-s2i-dotnetcore-ex   8080-tcp                 None
+s2i-dotnetcore-ex        s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local               s2i-dotnetcore-ex        8080-tcp                 None
+----

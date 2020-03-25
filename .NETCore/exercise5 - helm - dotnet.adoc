@@ -118,8 +118,14 @@ https://docs.openshift.com/container-platform/4.1/registry/securing-exposing-reg
 ----
 
 ----
-podman tag localhost/aspnet3k8s:v1 default-route-openshift-image-registry.apps.ocp44.local/marc/aspnet3k8s:v1
-[root@dell-r730-001 aspnet-core-helm-sample]# podman push default-route-openshift-image-registry.apps.ocp44.local/marc/aspnet3k8s:v1 --tls-verify=false
+
+Get token from
+oc describe secret  registry-token-m4mpw -n openshift-image-registry
+
+export TOKEN=<token from command above>
+podman tag localhost/aspnet3k8s:v1  default-route-openshift-image-registry.apps.ocp44.local/dotnetcore2/aspnet3k8s:v3
+buildah push --creds default:$TOKEN  --tls-verify=false default-route-openshift-image-registry.apps.ocp44.local/dotnetcore2/aspnet3k8s:v3
+
 ----
 
 ----

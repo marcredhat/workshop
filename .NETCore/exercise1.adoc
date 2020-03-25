@@ -69,3 +69,9 @@ NAME                     HOST/PORT                                             P
 marc-s2i-dotnetcore-ex   marc-s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local          marc-s2i-dotnetcore-ex   8080-tcp                 None
 s2i-dotnetcore-ex        s2i-dotnetcore-ex-dotnetcore2.apps.ocp44.local               s2i-dotnetcore-ex        8080-tcp                 None
 ----
+
+
+
+
+
+oc rollout latest dc/marc-s2i-dotnetcore-ex

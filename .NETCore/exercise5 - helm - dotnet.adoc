@@ -103,6 +103,11 @@ localhost/aspnet3k8s                        v1           2e5c8b66924d   45 secon
 registry.access.redhat.com/ubi8/dotnet-31   latest       0359590b092d   7 weeks ago      727 MB
 ----
 
+
+----
+podman tag localhost/aspnet3k8s:v1 image-registry.openshift-image-registry.svc:5000/aspnet3k8s:v1
+----
+
 ----
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 "stable" has been added to your repositories

@@ -30,7 +30,7 @@ image:images/newbranch.png[title="newbranch"]
 Change some code 
 ----
 
-image:images/codeimage.png[title="codeimage"]
+image:images/codeimage.png[title="changecode"]
 
 
 ----

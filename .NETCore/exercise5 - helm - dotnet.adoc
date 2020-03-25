@@ -113,11 +113,8 @@ image-registry   image-registry-openshift-image-registry.apps.ocp44.local       
 ----
 
 ----
-podman tag localhost/aspnet3k8s:v1 image-registry-openshift-image-registry.apps.ocp44.local/aspnet3k8s:v1
-----
-
-----
-podman push image-registry-openshift-image-registry.apps.ocp44.local/aspnet3k8s:v1
+podman tag localhost/aspnet3k8s:v1 172.30.160.241:5000/aspnet3k8s:v1
+podman push 172.30.160.241:5000/aspnet3k8s:v1
 ----
 
 ----

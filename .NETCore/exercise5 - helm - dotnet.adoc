@@ -125,6 +125,12 @@ oc describe secret  registry-token-m4mpw -n openshift-image-registry
 export TOKEN=<token from command above>
 podman tag localhost/aspnet3k8s:v1  default-route-openshift-image-registry.apps.ocp44.local/dotnetcore2/aspnet3k8s:v3
 buildah push --creds default:$TOKEN  --tls-verify=false default-route-openshift-image-registry.apps.ocp44.local/dotnetcore2/aspnet3k8s:v3
+----
+
+
+----
+podman  login -u="marcf5" -p="<token>" quay.io
+podman push dotnetcore2/aspnet3k8s:v1 quay.io/marcf5/dotnetcore
 
 ----
 

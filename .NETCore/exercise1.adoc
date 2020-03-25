@@ -34,6 +34,10 @@ image:images/changecode.png[title="changecode"]
 
 
 ----
+Create an app based on the new branch ("marc-dotnetcore-3.1")
+----
+
+----
 oc new-app dotnet:3.1~https://github.com/marcredhat/s2i-dotnetcore-ex#marc-dotnetcore-3.1 --context-dir=app
 ----
 

@@ -37,3 +37,8 @@ CURRENT   NAME                                                                  
           openshift-console-operator/api-ocp44-local:6443/system:admin          api-ocp44-local:6443   system:admin/api-ocp44-local:6443   openshift-console-operator
           openshift-console/api-ocp44-local:6443/system:admin                   api-ocp44-local:6443   system:admin/api-ocp44-local:6443   openshift-console
 ----
+
+----
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+"stable" has been added to your repositories
+----

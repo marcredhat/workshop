@@ -22,3 +22,18 @@ cd app
 dotnet run watch
 ----
 
+
+----
+https://computingforgeeks.com/install-and-use-helm-3-on-kubernetes-cluster/
+----
+
+----
+oc config get-contexts
+CURRENT   NAME                                                                  CLUSTER                AUTHINFO                            NAMESPACE
+          admin                                                                 ocp44                  admin
+          dotnetcore/api-ocp44-local:6443/system:admin                          api-ocp44-local:6443   system:admin/api-ocp44-local:6443   dotnetcore
+*         dotnetcore2/api-ocp44-local:6443/system:admin                         api-ocp44-local:6443   system:admin/api-ocp44-local:6443   dotnetcore2
+          openshift-authentication-operator/api-ocp44-local:6443/system:admin   api-ocp44-local:6443   system:admin/api-ocp44-local:6443   openshift-authentication-operator
+          openshift-console-operator/api-ocp44-local:6443/system:admin          api-ocp44-local:6443   system:admin/api-ocp44-local:6443   openshift-console-operator
+          openshift-console/api-ocp44-local:6443/system:admin                   api-ocp44-local:6443   system:admin/api-ocp44-local:6443   openshift-console
+----

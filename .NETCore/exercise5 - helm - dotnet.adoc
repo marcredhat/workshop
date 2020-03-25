@@ -112,6 +112,11 @@ NAME             HOST/PORT                                                  PATH
 image-registry   image-registry-openshift-image-registry.apps.ocp44.local          image-registry   5000-tcp                 None
 ----
 
+
+----
+https://docs.openshift.com/container-platform/4.1/registry/securing-exposing-registry.html#registry-exposing-secure-registry-manually_securing-exposing-registry
+----
+
 ----
 podman tag localhost/aspnet3k8s:v1 172.30.160.241:5000/aspnet3k8s:v1
 podman push 172.30.160.241:5000/aspnet3k8s:v1

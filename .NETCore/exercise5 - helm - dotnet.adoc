@@ -50,3 +50,13 @@ Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "stable" chart repository
 Update Complete. ⎈ Happy Helming!⎈
 ----
+
+----
+[root@dell-r730-001 aspnet-core-helm-sample]# helm install aspnet3release ./chart/
+NAME: aspnet3release
+LAST DEPLOYED: Wed Mar 25 03:59:21 2020
+NAMESPACE: dotnetcore2
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+----

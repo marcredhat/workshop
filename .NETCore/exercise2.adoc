@@ -28,3 +28,22 @@ spec:
 ----
 oc start-build s2i-dotnetcore-ex
 ----
+
+----
+oc edit dc s2i-dotnetcore-ex
+----
+
+----
+.....
+triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - s2i-dotnetcore-ex
+      from:
+        kind: ImageStreamTag
+        name: s2i-dotnetcore-ex:0.2
+        namespace: dotnetcore2
+.....
+----

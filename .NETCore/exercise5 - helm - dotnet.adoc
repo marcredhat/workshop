@@ -1,4 +1,10 @@
 
+
+----
+Video: https://www.youtube.com/watch?v=4NWROJakE8Q
+----
+
+
 ----
 Install helm on RHEL 8.2: https://github.com/marcredhat/workshop/tree/master/helm
 ----
